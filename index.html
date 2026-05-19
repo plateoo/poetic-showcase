@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetic Lingerie — La lingerie qui vous ressemble</title>
+  <meta name="description" content="Poetic Lingerie — marque belge de lingerie fine et inclusive fondée par Aurore Mayela. Conçu et fabriqué en Belgique.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'terracotta': '#9C5841',
+            'terracotta-deep': '#7A3F2E',
+            'rose-poudre': '#E8C6B5',
+            'ivoire': '#F5EFE6',
+            'cream': '#FAF6F0',
+            'nude': '#D4B8A0',
+            'charcoal': '#2A1F1A',
+            'or-sourd': '#B89668',
+          },
+          fontFamily: {
+            'cormorant': ['"Cormorant Garamond"', 'serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body { font-family: 'Inter', sans-serif; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 40s linear infinite; }
+    @keyframes bounce-soft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+    .scroll-bounce { animation: bounce-soft 1.8s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-ivoire text-charcoal antialiased">
+
+  <!-- [1] BANDEAU TOP -->
+  <div class="bg-charcoal text-ivoire text-center" style="font-size:13px;">
+    <p class="py-2 px-4">🇧🇪 Conçu et fabriqué en Belgique&nbsp;&nbsp;·&nbsp;&nbsp;Livraison offerte dès 2 ensembles achetés</p>
+  </div>
+
+  <!-- [2] HEADER STICKY -->
+  <header id="site-header" class="sticky top-0 z-50 bg-ivoire/90 backdrop-blur-md transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#" class="flex flex-col leading-none">
+        <span class="font-cormorant italic text-terracotta" style="font-size:2rem;">Poetic</span>
+        <span class="font-inter text-charcoal/70 tracking-[0.4em]" style="font-size:0.7rem;">L I N G E R I E</span>
+      </a>
+      <!-- Nav center -->
+      <nav class="hidden md:flex items-center gap-8 font-inter text-sm text-charcoal">
+        <a href="#univers" class="hover:text-terracotta transition-colors">Univers</a>
+        <a href="#boutique" class="hover:text-terracotta transition-colors">Boutique</a>
+        <a href="#coulisses" class="hover:text-terracotta transition-colors">Coulisses</a>
+        <a href="#journal" class="hover:text-terracotta transition-colors">Le journal</a>
+        <a href="#contact" class="hover:text-terracotta transition-colors">Contact</a>
+      </nav>
+      <!-- Bouton droite -->
+      <a href="#boutique" class="hidden md:inline-block bg-terracotta text-ivoire rounded-full px-6 py-2 font-inter text-sm hover:bg-terracotta-deep transition-colors">Acheter</a>
+      <!-- Burger mobile -->
+      <button id="burger" class="md:hidden text-terracotta" aria-label="Menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 transition-all duration-500 ease-in-out bg-ivoire">
+      <nav class="flex flex-col gap-1 px-8 pb-6 font-inter text-charcoal">
+        <a href="#univers" class="py-2 hover:text-terracotta transition-colors">Univers</a>
+        <a href="#boutique" class="py-2 hover:text-terracotta transition-colors">Boutique</a>
+        <a href="#coulisses" class="py-2 hover:text-terracotta transition-colors">Coulisses</a>
+        <a href="#journal" class="py-2 hover:text-terracotta transition-colors">Le journal</a>
+        <a href="#contact" class="py-2 hover:text-terracotta transition-colors">Contact</a>
+        <a href="#boutique" class="mt-3 bg-terracotta text-ivoire rounded-full px-6 py-2 text-sm text-center">Acheter</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- [3] HERO -->
+  <section class="relative min-h-screen flex items-end overflow-hidden">
+    <video src="https://poeticlingerie.be/wp-content/uploads/2025/11/b7086e8c04eb4d39bb612c07106b771d.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover"></video>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-charcoal/70"></div>
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-8 text-center" style="padding-bottom:20vh;">
+      <h1 class="fade-up font-cormorant italic text-ivoire leading-tight text-[4rem] md:text-[7rem]">La lingerie qui vous ressemble.</h1>
+      <p class="fade-up font-inter font-light text-ivoire/80 mt-4" style="font-size:1.2rem;">Pensée en Belgique, portée partout.</p>
+      <div class="fade-up flex flex-wrap gap-4 justify-center mt-8">
+        <a href="#boutique" class="bg-terracotta text-ivoire rounded-full px-8 py-3 font-inter text-sm hover:bg-terracotta-deep transition-colors">Découvrir la collection</a>
+        <a href="#univers" class="border border-ivoire text-ivoire rounded-full px-8 py-3 font-inter text-sm hover:bg-ivoire hover:text-charcoal transition-colors">L'univers Poetic</a>
+      </div>
+    </div>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 scroll-bounce">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F5EFE6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- [4] L'UNIVERS POETIC -->
+  <section id="univers" class="py-16 md:py-32 bg-ivoire">
+    <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+      <div class="fade-up">
+        <img src="https://images.unsplash.com/photo-1591176557752-f84109c388ea?w=1600&q=80&auto=format&fit=crop" alt="L'univers Poetic" class="aspect-[4/5] object-cover rounded-2xl w-full">
+      </div>
+      <div>
+        <p class="fade-up text-terracotta uppercase tracking-[0.3em] text-sm mb-6">L'univers</p>
+        <h2 class="fade-up font-cormorant text-charcoal leading-tight" style="font-size:3.5rem;">Une lingerie née d'une vision.</h2>
+        <div class="fade-up font-inter text-charcoal/80 leading-relaxed mt-6 space-y-4">
+          <p>Poetic Lingerie est née du rêve d'Aurore Mayela : créer des pièces qui célèbrent chaque corps, sans le contraindre.</p>
+          <p>Dessinées en Belgique, confectionnées avec soin, nos collections marient confort moderne et élégance intemporelle.</p>
+          <p>Chaque ensemble est pensé pour celle qui le porte — pas pour le regard des autres.</p>
+        </div>
+        <blockquote class="fade-up font-cormorant italic text-terracotta leading-snug mt-8" style="font-size:1.8rem;">« Chaque ensemble raconte une histoire, celle de la femme qui le porte. »</blockquote>
+        <p class="fade-up font-inter text-charcoal/60 mt-4">— Aurore Mayela, fondatrice</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- [5] MARQUEE INFINIE -->
+  <div class="h-20 bg-ivoire border-y border-nude/40 flex items-center overflow-hidden">
+    <div class="marquee-track inline-flex whitespace-nowrap">
+      <span class="font-cormorant italic text-charcoal px-4" style="font-size:2rem;">Made in Belgium <span class="text-terracotta">✦</span> Dentelle <span class="text-terracotta">✦</span> Confort <span class="text-terracotta">✦</span> Élégance <span class="text-terracotta">✦</span> Inclusivité <span class="text-terracotta">✦</span> Made in Belgium <span class="text-terracotta">✦</span> Dentelle <span class="text-terracotta">✦</span> Confort <span class="text-terracotta">✦</span>&nbsp;</span>
+      <span class="font-cormorant italic text-charcoal px-4" style="font-size:2rem;">Made in Belgium <span class="text-terracotta">✦</span> Dentelle <span class="text-terracotta">✦</span> Confort <span class="text-terracotta">✦</span> Élégance <span class="text-terracotta">✦</span> Inclusivité <span class="text-terracotta">✦</span> Made in Belgium <span class="text-terracotta">✦</span> Dentelle <span class="text-terracotta">✦</span> Confort <span class="text-terracotta">✦</span>&nbsp;</span>
+    </div>
+  </div>
+
+  <!-- [6] TRIPTYQUE COLLECTIONS -->
+  <section id="boutique" class="py-16 md:py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-8 text-center">
+      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:3rem;">Trois collections, mille moments.</h2>
+      <p class="fade-up font-inter text-charcoal/70 mt-4">Pour le quotidien, les soirs, et les moments qui marquent.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-8 mt-16">
+      <!-- Card 1 -->
+      <a href="#boutique" class="fade-up group relative overflow-hidden rounded-3xl aspect-[3/4] block">
+        <img src="https://images.unsplash.com/photo-1609535904959-aaa9d01fb5a4?w=1200&q=80&auto=format&fit=crop" alt="Collection Comfort" class="parallax-img absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-8 text-ivoire transition-transform duration-300 group-hover:-translate-y-1">
+          <p class="font-inter uppercase tracking-[0.3em] text-xs text-rose-poudre">Quotidien</p>
+          <h3 class="font-cormorant mt-1" style="font-size:2.5rem;">Comfort</h3>
+          <p class="font-inter text-ivoire/80 text-sm">Des essentiels qui caressent la peau.</p>
+          <span class="font-inter text-ivoire inline-block mt-2 hover:underline">Découvrir →</span>
+        </div>
+      </a>
+      <!-- Card 2 -->
+      <a href="#boutique" class="fade-up group relative overflow-hidden rounded-3xl aspect-[3/4] block">
+        <img src="https://images.unsplash.com/photo-1643916205111-0fd2357e08ed?w=1200&q=80&auto=format&fit=crop" alt="Collection Nuit Ébène" class="parallax-img absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-8 text-ivoire transition-transform duration-300 group-hover:-translate-y-1">
+          <p class="font-inter uppercase tracking-[0.3em] text-xs text-rose-poudre">Soirée</p>
+          <h3 class="font-cormorant mt-1" style="font-size:2.5rem;">Nuit Ébène</h3>
+          <p class="font-inter text-ivoire/80 text-sm">Pour les instants suspendus.</p>
+          <span class="font-inter text-ivoire inline-block mt-2 hover:underline">Découvrir →</span>
+        </div>
+      </a>
+      <!-- Card 3 -->
+      <a href="#boutique" class="fade-up group relative overflow-hidden rounded-3xl aspect-[3/4] block">
+        <img src="https://images.unsplash.com/photo-1610879485443-c472257793d1?w=1200&q=80&auto=format&fit=crop" alt="Collection Gloria" class="parallax-img absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-charcoal/80 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-8 text-ivoire transition-transform duration-300 group-hover:-translate-y-1">
+          <p class="font-inter uppercase tracking-[0.3em] text-xs text-rose-poudre">Statement</p>
+          <h3 class="font-cormorant mt-1" style="font-size:2.5rem;">Gloria</h3>
+          <p class="font-inter text-ivoire/80 text-sm">Des pièces qui marquent.</p>
+          <span class="font-inter text-ivoire inline-block mt-2 hover:underline">Découvrir →</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- [7] MADE IN BELGIUM -->
+  <section class="py-16 md:py-32 bg-rose-poudre">
+    <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="fade-up text-terracotta uppercase tracking-[0.3em] text-sm">Notre engagement</p>
+        <h2 class="fade-up font-cormorant text-charcoal mt-2" style="font-size:3rem;">Conçu et fabriqué en Belgique.</h2>
+        <p class="fade-up font-inter text-charcoal/80 leading-relaxed mt-6">Chaque pièce Poetic est dessinée à Bruxelles et confectionnée dans des ateliers européens engagés. Des matières sélectionnées avec soin, une éthique sans compromis.</p>
+        <ul class="fade-up font-inter text-charcoal mt-8 space-y-4">
+          <li class="flex items-center gap-4"><span style="font-size:1.5rem;">🇧🇪</span> Design en Belgique</li>
+          <li class="flex items-center gap-4"><span style="font-size:1.5rem;">🌿</span> Matières responsables</li>
+          <li class="flex items-center gap-4"><span style="font-size:1.5rem;">📦</span> Livraison offerte dès 2 ensembles</li>
+        </ul>
+      </div>
+      <div class="fade-up">
+        <img src="https://images.unsplash.com/photo-1700918232124-f64da19e73eb?w=1200&q=80&auto=format&fit=crop" alt="Atelier Poetic en Belgique" class="aspect-[4/5] object-cover rounded-2xl w-full">
+      </div>
+    </div>
+  </section>
+
+  <!-- [8] LES COULISSES -->
+  <section id="coulisses" class="py-16 md:py-32 bg-ivoire">
+    <div class="max-w-7xl mx-auto px-8 text-center">
+      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:3rem;">Les coulisses.</h2>
+      <p class="fade-up font-inter text-charcoal/70 mt-4">L'envers de chaque ensemble.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto px-8 mt-16">
+      <figure class="fade-up">
+        <div class="aspect-square rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1648383452657-3be3b45a1b3f?w=800&q=80&auto=format&fit=crop" alt="Le choix des matières" class="parallax-img w-full h-full object-cover">
+        </div>
+        <figcaption class="font-inter text-charcoal text-sm mt-3 text-center">Le choix des matières</figcaption>
+      </figure>
+      <figure class="fade-up">
+        <div class="aspect-square rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1700918232124-f64da19e73eb?w=800&q=80&auto=format&fit=crop" alt="L'atelier" class="parallax-img w-full h-full object-cover">
+        </div>
+        <figcaption class="font-inter text-charcoal text-sm mt-3 text-center">L'atelier</figcaption>
+      </figure>
+      <figure class="fade-up">
+        <div class="aspect-square rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1610879485443-c472257793d1?w=800&q=80&auto=format&fit=crop" alt="Le shooting" class="parallax-img w-full h-full object-cover">
+        </div>
+        <figcaption class="font-inter text-charcoal text-sm mt-3 text-center">Le shooting</figcaption>
+      </figure>
+      <figure class="fade-up">
+        <div class="aspect-square rounded-2xl overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1582482046868-f9c5f4557a87?w=800&q=80&auto=format&fit=crop" alt="Les essayages" class="parallax-img w-full h-full object-cover">
+        </div>
+        <figcaption class="font-inter text-charcoal text-sm mt-3 text-center">Les essayages</figcaption>
+      </figure>
+    </div>
+    <div class="text-center mt-12">
+      <a href="https://instagram.com/poetic.lingerie" target="_blank" rel="noopener" class="inline-block border border-terracotta text-terracotta rounded-full px-8 py-3 font-inter text-sm hover:bg-terracotta hover:text-ivoire transition-colors">Suivre l'aventure sur Instagram →</a>
+    </div>
+  </section>
+
+  <!-- [9] AVIS CLIENTES -->
+  <section id="journal" class="py-16 md:py-32 bg-cream">
+    <div class="max-w-7xl mx-auto px-8 text-center">
+      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:3rem;">Elles portent Poetic.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-8 mt-16">
+      <!-- Card 1 -->
+      <div class="fade-up bg-ivoire rounded-2xl p-8">
+        <p class="text-terracotta tracking-widest">★★★★★</p>
+        <p class="font-cormorant italic text-charcoal leading-relaxed mt-4 text-lg">J'avais du mal à trouver de la lingerie élégante, confortable et pensée pour toutes les morphologies. Poetic m'a vraiment réconciliée avec le fait de me sentir belle au quotidien.</p>
+        <div class="mt-6">
+          <p class="font-inter font-semibold text-charcoal">Sarah M</p>
+          <p class="font-inter text-charcoal/60 text-sm">Ensemble Gloria Noir</p>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="fade-up bg-ivoire rounded-2xl p-8">
+        <p class="text-terracotta tracking-widest">★★★★★</p>
+        <p class="font-cormorant italic text-charcoal leading-relaxed mt-4 text-lg">On sent tout de suite le soin apporté aux finitions et au confort. J'ai rarement porté une lingerie aussi flatteuse sans compromis sur le maintien.</p>
+        <div class="mt-6">
+          <p class="font-inter font-semibold text-charcoal">Inès L</p>
+          <p class="font-inter text-charcoal/60 text-sm">Ensemble Comfort</p>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="fade-up bg-ivoire rounded-2xl p-8">
+        <p class="text-terracotta tracking-widest">★★★★★</p>
+        <p class="font-cormorant italic text-charcoal leading-relaxed mt-4 text-lg">Une féminité élégante, moderne et inclusive. La qualité est superbe et chaque pièce donne confiance.</p>
+        <div class="mt-6">
+          <p class="font-inter font-semibold text-charcoal">Naomi K</p>
+          <p class="font-inter text-charcoal/60 text-sm">Ensemble Rosine</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- [10] NEWSLETTER -->
+  <section id="contact" class="py-24 bg-charcoal text-ivoire">
+    <div class="max-w-3xl mx-auto px-8 text-center">
+      <h2 class="fade-up font-cormorant" style="font-size:3rem;">Rejoignez le cercle Poetic.</h2>
+      <p class="fade-up font-inter text-ivoire/70 mt-4">Accès en avant-première aux collections, contenus exclusifs, et -10% sur votre première commande.</p>
+      <form class="fade-up flex gap-2 max-w-md mx-auto mt-8" onsubmit="return false;">
+        <input type="email" placeholder="Votre email" class="flex-1 bg-transparent border-b border-ivoire/40 px-4 py-3 focus:border-terracotta outline-none text-ivoire placeholder-ivoire/40">
+        <button type="submit" class="bg-terracotta text-ivoire rounded-full px-6 py-3 font-inter text-sm hover:bg-terracotta-deep transition-colors">Je m'inscris</button>
+      </form>
+      <p class="fade-up font-inter text-ivoire/40 text-xs mt-4">Pas de spam. Désinscription à tout moment.</p>
+    </div>
+  </section>
+
+  <!-- [11] FOOTER -->
+  <footer class="py-16 bg-charcoal text-ivoire/70 border-t border-ivoire/10">
+    <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-4 gap-8">
+      <!-- Col 1 -->
+      <div>
+        <div class="flex flex-col leading-none">
+          <span class="font-cormorant italic text-terracotta" style="font-size:1.8rem;">Poetic</span>
+          <span class="font-inter text-ivoire/70 tracking-[0.4em]" style="font-size:0.65rem;">L I N G E R I E</span>
+        </div>
+        <p class="font-inter text-ivoire/60 text-sm mt-2">La lingerie qui vous ressemble.</p>
+        <div class="flex gap-4 mt-4">
+          <!-- Instagram -->
+          <a href="https://instagram.com/poetic.lingerie" target="_blank" rel="noopener" class="text-ivoire/70 hover:text-terracotta transition-colors" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="#" class="text-ivoire/70 hover:text-terracotta transition-colors" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <!-- TikTok -->
+          <a href="#" class="text-ivoire/70 hover:text-terracotta transition-colors" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 2h-3v13.5a3 3 0 1 1-3-3c.3 0 .6 0 .9.1V9.5a6 6 0 1 0 5.1 5.9V8.4a7 7 0 0 0 4 1.3V6.6A4 4 0 0 1 16 2z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Col 2 -->
+      <div>
+        <h3 class="font-inter uppercase tracking-wider text-xs text-ivoire mb-4">Boutique</h3>
+        <ul class="font-inter text-sm space-y-2">
+          <li><a href="#boutique" class="hover:text-terracotta transition-colors">Tous les produits</a></li>
+          <li><a href="#boutique" class="hover:text-terracotta transition-colors">Nouveautés</a></li>
+          <li><a href="#boutique" class="hover:text-terracotta transition-colors">Comfort</a></li>
+          <li><a href="#boutique" class="hover:text-terracotta transition-colors">Gloria</a></li>
+        </ul>
+      </div>
+      <!-- Col 3 -->
+      <div>
+        <h3 class="font-inter uppercase tracking-wider text-xs text-ivoire mb-4">Aide</h3>
+        <ul class="font-inter text-sm space-y-2">
+          <li><a href="#" class="hover:text-terracotta transition-colors">Livraison</a></li>
+          <li><a href="#" class="hover:text-terracotta transition-colors">Retours</a></li>
+          <li><a href="#" class="hover:text-terracotta transition-colors">Guide des tailles</a></li>
+          <li><a href="#contact" class="hover:text-terracotta transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Col 4 -->
+      <div>
+        <h3 class="font-inter uppercase tracking-wider text-xs text-ivoire mb-4">L'univers</h3>
+        <ul class="font-inter text-sm space-y-2">
+          <li><a href="#univers" class="hover:text-terracotta transition-colors">Notre histoire</a></li>
+          <li><a href="#coulisses" class="hover:text-terracotta transition-colors">Coulisses</a></li>
+          <li><a href="#journal" class="hover:text-terracotta transition-colors">Le journal</a></li>
+          <li><a href="#" class="hover:text-terracotta transition-colors">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 border-t border-ivoire/10 mt-12 pt-8 text-center font-inter text-ivoire/40 text-xs">
+      © 2026 Poetic Lingerie — Marque 100% belge. Site conçu avec ❤ par Serenity Studio.
+    </div>
+  </footer>
+
+  <script>
+    // Burger menu mobile
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+      if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px') {
+        mobileMenu.style.maxHeight = '0px';
+      } else {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => { mobileMenu.style.maxHeight = '0px'; });
+    });
+
+    // Ombre du header au scroll
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) header.classList.add('shadow-md');
+      else header.classList.remove('shadow-md');
+    });
+
+    // Lenis smooth scroll
+    const lenis = new Lenis({ smoothWheel: true, lerp: 0.1 });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // GSAP setup
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade-up sur chaque section
+    gsap.utils.toArray('.fade-up').forEach(el => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 80%' }
+      });
+    });
+
+    // Parallax léger sur images des sections collections et coulisses
+    gsap.utils.toArray('.parallax-img').forEach(img => {
+      gsap.to(img, {
+        yPercent: -10,
+        ease: 'none',
+        scrollTrigger: { trigger: img, scrub: true }
+      });
+    });
+
+    // Sync ScrollTrigger avec Lenis
+    lenis.on('scroll', ScrollTrigger.update);
+  </script>
+
+</body>
+</html>
