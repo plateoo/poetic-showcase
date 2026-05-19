@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boutique — Poetic Lingerie</title>
+  <meta name="description" content="Découvrez la collection Poetic Lingerie : ensembles, nuisettes et pièces statement, conçus et fabriqués en Belgique.">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'terracotta': '#9C5841',
+            'terracotta-deep': '#7A3F2E',
+            'rose-poudre': '#E8C6B5',
+            'ivoire': '#F5EFE6',
+            'cream': '#FAF6F0',
+            'nude': '#D4B8A0',
+            'charcoal': '#2A1F1A',
+            'or-sourd': '#B89668',
+          },
+          fontFamily: {
+            'cormorant': ['"Cormorant Garamond"', 'serif'],
+            'inter': ['Inter', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body { font-family: 'Inter', sans-serif; }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 40s linear infinite; }
+    @keyframes bounce-soft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
+    .scroll-bounce { animation: bounce-soft 1.8s ease-in-out infinite; }
+  </style>
+</head>
+<body class="bg-ivoire text-charcoal antialiased">
+
+  <!-- [1] BANDEAU TOP -->
+  <div class="bg-charcoal text-ivoire text-center" style="font-size:13px;">
+    <p class="py-2 px-4">🇧🇪 Conçu et fabriqué en Belgique&nbsp;&nbsp;·&nbsp;&nbsp;Livraison offerte dès 2 ensembles achetés</p>
+  </div>
+
+  <!-- [2] HEADER STICKY -->
+  <header id="site-header" class="sticky top-0 z-50 bg-ivoire/90 backdrop-blur-md transition-shadow duration-300">
+    <div class="max-w-7xl mx-auto px-8 py-4 flex items-center justify-between">
+      <!-- Logo -->
+      <a href="index.html" class="block">
+        <img src="img/insta/logo.png" alt="Poetic Lingerie" class="h-14 w-auto" style="mix-blend-mode: multiply;">
+      </a>
+      <!-- Nav center -->
+      <nav class="hidden md:flex items-center gap-8 font-inter text-sm text-charcoal">
+        <a href="index.html#univers" class="hover:text-terracotta transition-colors">Univers</a>
+        <a href="boutique.html" class="text-terracotta transition-colors">Boutique</a>
+        <a href="index.html#coulisses" class="hover:text-terracotta transition-colors">Coulisses</a>
+        <a href="index.html#journal" class="hover:text-terracotta transition-colors">Le journal</a>
+        <a href="index.html#contact" class="hover:text-terracotta transition-colors">Contact</a>
+      </nav>
+      <!-- Bouton droite -->
+      <a href="boutique.html" class="hidden md:inline-block bg-terracotta text-ivoire rounded-full px-6 py-2 font-inter text-sm hover:bg-terracotta-deep transition-colors">Acheter</a>
+      <!-- Burger mobile -->
+      <button id="burger" class="md:hidden text-terracotta" aria-label="Menu">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="md:hidden overflow-hidden max-h-0 transition-all duration-500 ease-in-out bg-ivoire">
+      <nav class="flex flex-col gap-1 px-8 pb-6 font-inter text-charcoal">
+        <a href="index.html#univers" class="py-2 hover:text-terracotta transition-colors">Univers</a>
+        <a href="boutique.html" class="py-2 text-terracotta transition-colors">Boutique</a>
+        <a href="index.html#coulisses" class="py-2 hover:text-terracotta transition-colors">Coulisses</a>
+        <a href="index.html#journal" class="py-2 hover:text-terracotta transition-colors">Le journal</a>
+        <a href="index.html#contact" class="py-2 hover:text-terracotta transition-colors">Contact</a>
+        <a href="boutique.html" class="mt-3 bg-terracotta text-ivoire rounded-full px-6 py-2 text-sm text-center">Acheter</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- [2] HÉROS DE PAGE -->
+  <section class="py-24 bg-ivoire">
+    <div class="max-w-7xl mx-auto px-8 text-center">
+      <p class="fade-up uppercase tracking-[0.3em] text-sm text-terracotta">La collection</p>
+      <h1 class="fade-up font-cormorant text-charcoal leading-tight mt-4" style="font-size:4.5rem;">Toutes nos pièces, pensées pour vous.</h1>
+      <p class="fade-up font-inter text-charcoal/70 max-w-2xl mx-auto mt-4">Six ensembles, six histoires. Choisissez celui qui vous accompagnera dans votre quotidien — ou dans vos plus belles soirées.</p>
+    </div>
+  </section>
+
+  <!-- [3] BARRE DE FILTRES -->
+  <div class="py-6 bg-cream border-y border-nude/30">
+    <div class="max-w-7xl mx-auto px-8 flex flex-wrap gap-3 justify-center">
+      <button class="rounded-full px-5 py-2 text-sm font-inter bg-terracotta text-ivoire">Tous</button>
+      <button class="rounded-full px-5 py-2 text-sm font-inter bg-ivoire border border-nude/40 text-charcoal hover:bg-rose-poudre transition-colors">Ensembles</button>
+      <button class="rounded-full px-5 py-2 text-sm font-inter bg-ivoire border border-nude/40 text-charcoal hover:bg-rose-poudre transition-colors">Nuisettes</button>
+      <button class="rounded-full px-5 py-2 text-sm font-inter bg-ivoire border border-nude/40 text-charcoal hover:bg-rose-poudre transition-colors">Quotidien</button>
+      <button class="rounded-full px-5 py-2 text-sm font-inter bg-ivoire border border-nude/40 text-charcoal hover:bg-rose-poudre transition-colors">Soirée</button>
+      <button class="rounded-full px-5 py-2 text-sm font-inter bg-ivoire border border-nude/40 text-charcoal hover:bg-rose-poudre transition-colors">Statement</button>
+    </div>
+  </div>
+
+  <!-- [4] GRILLE PRODUITS -->
+  <section class="py-16 md:py-24 bg-ivoire">
+    <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Produit 1 — Comfort -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-4">
+          <img src="img/insta/quotidien-comfort.jpg" alt="Comfort" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <span class="absolute top-4 left-4 bg-or-sourd text-ivoire text-xs uppercase tracking-wider px-3 py-1 rounded-full">Best-seller</span>
+          <button class="absolute top-4 right-4 w-9 h-9 rounded-full bg-ivoire/80 backdrop-blur flex items-center justify-center hover:bg-terracotta hover:text-ivoire transition-colors" aria-label="Ajouter à la wishlist">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Quotidien · Ensemble</p>
+            <h3 class="font-cormorant text-charcoal text-2xl mt-1">Comfort</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium">44,95 €</p>
+        </div>
+        <p class="font-inter text-charcoal/60 text-sm mt-2">4 tailles — du S au XL</p>
+      </article>
+
+      <!-- Produit 2 — Nuit Ébène -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-4">
+          <img src="img/insta/soiree-nuit-ebene.jpg" alt="Nuit Ébène" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <button class="absolute top-4 right-4 w-9 h-9 rounded-full bg-ivoire/80 backdrop-blur flex items-center justify-center hover:bg-terracotta hover:text-ivoire transition-colors" aria-label="Ajouter à la wishlist">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Soirée · Nuisette</p>
+            <h3 class="font-cormorant text-charcoal text-2xl mt-1">Nuit Ébène</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium">44,95 €</p>
+        </div>
+        <p class="font-inter text-charcoal/60 text-sm mt-2">4 tailles — du S au XL</p>
+      </article>
+
+      <!-- Produit 3 — Gloria -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-4">
+          <img src="img/insta/statement-gloria.jpg" alt="Gloria" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <span class="absolute top-4 left-4 bg-terracotta text-ivoire text-xs uppercase tracking-wider px-3 py-1 rounded-full">Coup de cœur</span>
+          <button class="absolute top-4 right-4 w-9 h-9 rounded-full bg-ivoire/80 backdrop-blur flex items-center justify-center hover:bg-terracotta hover:text-ivoire transition-colors" aria-label="Ajouter à la wishlist">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Statement · Ensemble</p>
+            <h3 class="font-cormorant text-charcoal text-2xl mt-1">Gloria</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium">54,99 €</p>
+        </div>
+        <p class="font-inter text-charcoal/60 text-sm mt-2">4 tailles — du S au XL</p>
+      </article>
+
+      <!-- Produit 4 — Iris -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-4">
+          <img src="img/insta/atelier.jpg" alt="Iris" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <button class="absolute top-4 right-4 w-9 h-9 rounded-full bg-ivoire/80 backdrop-blur flex items-center justify-center hover:bg-terracotta hover:text-ivoire transition-colors" aria-label="Ajouter à la wishlist">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Soirée · Ensemble</p>
+            <h3 class="font-cormorant text-charcoal text-2xl mt-1">Iris</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium">54,99 €</p>
+        </div>
+        <p class="font-inter text-charcoal/60 text-sm mt-2">4 tailles — du S au XL</p>
+      </article>
+
+      <!-- Produit 5 — Rosine -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-4">
+          <img src="img/insta/matieres.jpg" alt="Rosine" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <span class="absolute top-4 left-4 bg-rose-poudre text-charcoal text-xs uppercase tracking-wider px-3 py-1 rounded-full">Nouveauté</span>
+          <button class="absolute top-4 right-4 w-9 h-9 rounded-full bg-ivoire/80 backdrop-blur flex items-center justify-center hover:bg-terracotta hover:text-ivoire transition-colors" aria-label="Ajouter à la wishlist">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Soirée · Ensemble</p>
+            <h3 class="font-cormorant text-charcoal text-2xl mt-1">Rosine</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium">54,99 €</p>
+        </div>
+        <p class="font-inter text-charcoal/60 text-sm mt-2">4 tailles — du S au XL</p>
+      </article>
+
+      <!-- Produit 6 — Émeraude -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-4">
+          <img src="img/insta/univers-portrait.jpg" alt="Émeraude" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+          <button class="absolute top-4 right-4 w-9 h-9 rounded-full bg-ivoire/80 backdrop-blur flex items-center justify-center hover:bg-terracotta hover:text-ivoire transition-colors" aria-label="Ajouter à la wishlist">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Statement · Ensemble</p>
+            <h3 class="font-cormorant text-charcoal text-2xl mt-1">Émeraude</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium">54,99 €</p>
+        </div>
+        <p class="font-inter text-charcoal/60 text-sm mt-2">4 tailles — du S au XL</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- [5] BANDEAU SÉPARATEUR -->
+  <div class="h-16 bg-rose-poudre flex items-center justify-center">
+    <p class="font-cormorant italic text-charcoal text-center px-4" style="font-size:1.5rem;">Livraison offerte dès 2 ensembles achetés <span class="text-terracotta">✦</span> Conçu en Belgique</p>
+  </div>
+
+  <!-- [6] FOCUS PRODUIT -->
+  <section class="py-24 bg-cream">
+    <div class="max-w-7xl mx-auto px-8">
+      <p class="fade-up uppercase tracking-[0.3em] text-sm text-terracotta">Le produit en détail</p>
+      <h2 class="fade-up font-cormorant text-charcoal mt-2" style="font-size:2.5rem;">Découvrez l'expérience Poetic</h2>
+
+      <div class="grid md:grid-cols-2 gap-12 mt-12 items-start">
+
+        <!-- COLONNE GAUCHE — Galerie -->
+        <div class="fade-up">
+          <div class="aspect-[4/5] rounded-2xl overflow-hidden">
+            <img src="img/insta/statement-gloria.jpg" alt="Ensemble Gloria" class="w-full h-full object-cover">
+          </div>
+          <div class="grid grid-cols-4 gap-3 mt-3">
+            <div class="aspect-square rounded-xl overflow-hidden border-2 border-terracotta cursor-pointer hover:opacity-80 transition-opacity">
+              <img src="img/insta/matieres.jpg" alt="Détail matière" class="w-full h-full object-cover">
+            </div>
+            <div class="aspect-square rounded-xl overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+              <img src="img/insta/ecrin.jpg" alt="Packaging" class="w-full h-full object-cover">
+            </div>
+            <div class="aspect-square rounded-xl overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+              <img src="img/insta/atelier.jpg" alt="Atelier" class="w-full h-full object-cover">
+            </div>
+            <div class="aspect-square rounded-xl overflow-hidden cursor-pointer hover:opacity-80 transition-opacity">
+              <img src="img/insta/univers-portrait.jpg" alt="Porté" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </div>
+
+        <!-- COLONNE DROITE — Infos produit -->
+        <div class="md:sticky md:top-32">
+          <p class="fade-up uppercase tracking-[0.3em] text-xs text-terracotta">Statement · Ensemble</p>
+          <h3 class="fade-up font-cormorant text-charcoal mt-2" style="font-size:3.5rem;">Gloria</h3>
+          <p class="fade-up text-terracotta tracking-widest mt-3">★★★★★ <span class="text-charcoal/60 text-sm ml-2">(47 avis)</span></p>
+          <p class="fade-up font-inter text-charcoal mt-4" style="font-size:2rem;">54,99 €</p>
+          <p class="fade-up font-inter text-charcoal/80 leading-relaxed mt-4">L'ensemble Gloria incarne l'esprit Poetic dans sa version la plus affirmée. Sa dentelle florale brodée, sa coupe galbante et ses finitions main en font une pièce statement à porter pour soi.</p>
+
+          <!-- Sélecteur taille -->
+          <div class="mt-6">
+            <p class="font-inter text-sm uppercase tracking-wider text-charcoal/70 mb-3">Taille</p>
+            <div class="flex gap-2">
+              <button class="bg-ivoire border border-nude/40 rounded-full w-12 h-12 hover:border-terracotta hover:bg-terracotta hover:text-ivoire transition font-inter text-sm">S</button>
+              <button class="bg-terracotta text-ivoire border border-terracotta rounded-full w-12 h-12 transition font-inter text-sm">M</button>
+              <button class="bg-ivoire border border-nude/40 rounded-full w-12 h-12 hover:border-terracotta hover:bg-terracotta hover:text-ivoire transition font-inter text-sm">L</button>
+              <button class="bg-ivoire border border-nude/40 rounded-full w-12 h-12 hover:border-terracotta hover:bg-terracotta hover:text-ivoire transition font-inter text-sm">XL</button>
+            </div>
+            <a href="#" class="text-xs underline text-charcoal/60 mt-2 inline-block">Guide des tailles →</a>
+          </div>
+
+          <!-- CTAs -->
+          <div class="mt-8">
+            <button class="w-full bg-charcoal text-ivoire rounded-full py-4 font-inter uppercase tracking-wider text-sm hover:bg-terracotta transition">Ajouter au panier</button>
+            <button class="w-full border border-charcoal text-charcoal rounded-full py-4 mt-3 font-inter uppercase tracking-wider text-sm hover:bg-charcoal hover:text-ivoire transition">Ajouter à la wishlist</button>
+          </div>
+
+          <!-- Encart Made in Belgium -->
+          <div class="mt-8 p-5 bg-rose-poudre rounded-2xl flex items-center gap-4">
+            <span style="font-size:2rem;">🇧🇪</span>
+            <p class="font-inter text-charcoal text-sm leading-relaxed"><strong>Conçu en Belgique.</strong> Confectionné dans des ateliers européens engagés. Livraison offerte dès 2 ensembles achetés.</p>
+          </div>
+
+          <!-- Accordéons -->
+          <div class="mt-8">
+            <!-- Accordéon 1 -->
+            <div class="border-t border-nude/40">
+              <button class="accordion-trigger w-full flex items-center justify-between py-4 cursor-pointer text-left">
+                <span class="font-inter text-charcoal">Composition & matières</span>
+                <span class="accordion-icon font-inter text-terracotta text-xl">+</span>
+              </button>
+              <div class="accordion-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease;">
+                <p class="font-inter text-charcoal/70 text-sm leading-relaxed pb-4">Dentelle brodée 92% polyamide, 8% élasthanne. Doublure 100% coton biologique certifié GOTS. Élastiques en polyester recyclé.</p>
+              </div>
+            </div>
+            <!-- Accordéon 2 -->
+            <div class="border-t border-nude/40">
+              <button class="accordion-trigger w-full flex items-center justify-between py-4 cursor-pointer text-left">
+                <span class="font-inter text-charcoal">Entretien</span>
+                <span class="accordion-icon font-inter text-terracotta text-xl">+</span>
+              </button>
+              <div class="accordion-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease;">
+                <p class="font-inter text-charcoal/70 text-sm leading-relaxed pb-4">Lavage main à 30° recommandé. Ne pas essorer. Séchage à plat à l'abri du soleil direct. Pour préserver la dentelle brodée, utiliser un sac filet en machine.</p>
+              </div>
+            </div>
+            <!-- Accordéon 3 -->
+            <div class="border-t border-b border-nude/40">
+              <button class="accordion-trigger w-full flex items-center justify-between py-4 cursor-pointer text-left">
+                <span class="font-inter text-charcoal">Livraison & retours</span>
+                <span class="accordion-icon font-inter text-terracotta text-xl">+</span>
+              </button>
+              <div class="accordion-content" style="max-height:0;overflow:hidden;transition:max-height 0.4s ease;">
+                <p class="font-inter text-charcoal/70 text-sm leading-relaxed pb-4">Livraison Belgique 3-5j (5,90€, offerte dès 2 ensembles). UE 5-8j (9,90€). Retours gratuits sous 30 jours.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- [7] PRODUITS SIMILAIRES -->
+  <section class="py-16 bg-ivoire">
+    <div class="max-w-7xl mx-auto px-8 text-center">
+      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:2.5rem;">Vous aimerez aussi</h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-6 max-w-7xl mx-auto px-8 mt-12">
+
+      <!-- Mini Comfort -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-3">
+          <img src="img/insta/quotidien-comfort.jpg" alt="Comfort" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Quotidien</p>
+            <h3 class="font-cormorant text-charcoal mt-1" style="font-size:1.5rem;">Comfort</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium text-sm">44,95 €</p>
+        </div>
+      </article>
+
+      <!-- Mini Nuit Ébène -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-3">
+          <img src="img/insta/soiree-nuit-ebene.jpg" alt="Nuit Ébène" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Soirée</p>
+            <h3 class="font-cormorant text-charcoal mt-1" style="font-size:1.5rem;">Nuit Ébène</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium text-sm">44,95 €</p>
+        </div>
+      </article>
+
+      <!-- Mini Iris -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-3">
+          <img src="img/insta/atelier.jpg" alt="Iris" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Soirée</p>
+            <h3 class="font-cormorant text-charcoal mt-1" style="font-size:1.5rem;">Iris</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium text-sm">54,99 €</p>
+        </div>
+      </article>
+
+      <!-- Mini Rosine -->
+      <article class="fade-up group cursor-pointer">
+        <div class="relative aspect-[3/4] overflow-hidden rounded-2xl bg-cream mb-3">
+          <img src="img/insta/matieres.jpg" alt="Rosine" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+        </div>
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-inter uppercase tracking-[0.2em] text-xs text-terracotta">Soirée</p>
+            <h3 class="font-cormorant text-charcoal mt-1" style="font-size:1.5rem;">Rosine</h3>
+          </div>
+          <p class="font-inter text-charcoal font-medium text-sm">54,99 €</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- [8] NEWSLETTER -->
+  <section id="contact" class="py-24 bg-charcoal text-ivoire">
+    <div class="max-w-3xl mx-auto px-8 text-center">
+      <h2 class="fade-up font-cormorant" style="font-size:3rem;">Rejoignez le cercle Poetic.</h2>
+      <p class="fade-up font-inter text-ivoire/70 mt-4">Accès en avant-première aux collections, contenus exclusifs, et -10% sur votre première commande.</p>
+      <form class="fade-up flex gap-2 max-w-md mx-auto mt-8" onsubmit="return false;">
+        <input type="email" placeholder="Votre email" class="flex-1 bg-transparent border-b border-ivoire/40 px-4 py-3 focus:border-terracotta outline-none text-ivoire placeholder-ivoire/40">
+        <button type="submit" class="bg-terracotta text-ivoire rounded-full px-6 py-3 font-inter text-sm hover:bg-terracotta-deep transition-colors">Je m'inscris</button>
+      </form>
+      <p class="fade-up font-inter text-ivoire/40 text-xs mt-4">Pas de spam. Désinscription à tout moment.</p>
+    </div>
+  </section>
+
+  <!-- [9] FOOTER -->
+  <footer class="py-16 bg-charcoal text-ivoire/70 border-t border-ivoire/10">
+    <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-4 gap-8">
+      <!-- Col 1 -->
+      <div>
+        <div class="flex flex-col leading-none">
+          <span class="font-cormorant italic text-terracotta" style="font-size:1.8rem;">Poetic</span>
+          <span class="font-inter text-ivoire/70 tracking-[0.4em]" style="font-size:0.65rem;">L I N G E R I E</span>
+        </div>
+        <p class="font-inter text-ivoire/60 text-sm mt-2">La lingerie qui vous ressemble.</p>
+        <div class="flex gap-4 mt-4">
+          <!-- Instagram -->
+          <a href="https://instagram.com/poetic.lingerie" target="_blank" rel="noopener" class="text-ivoire/70 hover:text-terracotta transition-colors" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+            </svg>
+          </a>
+          <!-- Facebook -->
+          <a href="https://www.facebook.com/61554712322486/" target="_blank" rel="noopener" class="text-ivoire/70 hover:text-terracotta transition-colors" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <!-- TikTok -->
+          <a href="https://www.tiktok.com/@poetic.lingerie" target="_blank" rel="noopener" class="text-ivoire/70 hover:text-terracotta transition-colors" aria-label="TikTok">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 2h-3v13.5a3 3 0 1 1-3-3c.3 0 .6 0 .9.1V9.5a6 6 0 1 0 5.1 5.9V8.4a7 7 0 0 0 4 1.3V6.6A4 4 0 0 1 16 2z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      <!-- Col 2 -->
+      <div>
+        <h3 class="font-inter uppercase tracking-wider text-xs text-ivoire mb-4">Boutique</h3>
+        <ul class="font-inter text-sm space-y-2">
+          <li><a href="boutique.html" class="text-terracotta transition-colors">Tous les produits</a></li>
+          <li><a href="boutique.html" class="hover:text-terracotta transition-colors">Nouveautés</a></li>
+          <li><a href="boutique.html" class="hover:text-terracotta transition-colors">Comfort</a></li>
+          <li><a href="boutique.html" class="hover:text-terracotta transition-colors">Gloria</a></li>
+        </ul>
+      </div>
+      <!-- Col 3 -->
+      <div>
+        <h3 class="font-inter uppercase tracking-wider text-xs text-ivoire mb-4">Aide</h3>
+        <ul class="font-inter text-sm space-y-2">
+          <li><a href="#" class="hover:text-terracotta transition-colors">Livraison</a></li>
+          <li><a href="#" class="hover:text-terracotta transition-colors">Retours</a></li>
+          <li><a href="#" class="hover:text-terracotta transition-colors">Guide des tailles</a></li>
+          <li><a href="#contact" class="hover:text-terracotta transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <!-- Col 4 -->
+      <div>
+        <h3 class="font-inter uppercase tracking-wider text-xs text-ivoire mb-4">L'univers</h3>
+        <ul class="font-inter text-sm space-y-2">
+          <li><a href="index.html#univers" class="hover:text-terracotta transition-colors">Notre histoire</a></li>
+          <li><a href="index.html#coulisses" class="hover:text-terracotta transition-colors">Coulisses</a></li>
+          <li><a href="index.html#journal" class="hover:text-terracotta transition-colors">Le journal</a></li>
+          <li><a href="#" class="hover:text-terracotta transition-colors">CGV</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto px-8 border-t border-ivoire/10 mt-12 pt-8 text-center font-inter text-ivoire/40 text-xs">
+      © 2026 Poetic Lingerie — Marque 100% belge. Site conçu avec ❤ par <a href="https://plateoo.github.io/serenity-studio/" target="_blank" rel="noopener" class="text-ivoire/60 hover:text-terracotta transition-colors underline-offset-2 hover:underline">Serenity Studio</a>.
+    </div>
+  </footer>
+
+  <script>
+    // Burger menu mobile
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    burger.addEventListener('click', () => {
+      if (mobileMenu.style.maxHeight && mobileMenu.style.maxHeight !== '0px') {
+        mobileMenu.style.maxHeight = '0px';
+      } else {
+        mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+      }
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => { mobileMenu.style.maxHeight = '0px'; });
+    });
+
+    // Ombre du header au scroll
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) header.classList.add('shadow-md');
+      else header.classList.remove('shadow-md');
+    });
+
+    // Lenis smooth scroll
+    const lenis = new Lenis({ smoothWheel: true, lerp: 0.1 });
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    // GSAP setup
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Fade-up sur chaque section
+    gsap.utils.toArray('.fade-up').forEach(el => {
+      gsap.from(el, {
+        opacity: 0,
+        y: 40,
+        duration: 1,
+        ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 80%' }
+      });
+    });
+
+    // Parallax léger sur images des sections collections et coulisses
+    gsap.utils.toArray('.parallax-img').forEach(img => {
+      gsap.to(img, {
+        yPercent: -10,
+        ease: 'none',
+        scrollTrigger: { trigger: img, scrub: true }
+      });
+    });
+
+    // Sync ScrollTrigger avec Lenis
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // Accordéons
+    document.querySelectorAll('.accordion-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('.accordion-icon');
+        if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+          content.style.maxHeight = '0px';
+          if (icon) icon.textContent = '+';
+        } else {
+          content.style.maxHeight = content.scrollHeight + 'px';
+          if (icon) icon.textContent = '−';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
