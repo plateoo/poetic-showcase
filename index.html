@@ -8,7 +8,7 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
@@ -475,10 +475,15 @@
       else header.classList.remove('shadow-md');
     });
 
-    // Lenis smooth scroll
-    const lenis = new Lenis({ smoothWheel: true, lerp: 0.1 });
-    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-    requestAnimationFrame(raf);
+    // Lenis smooth scroll (garde défensive si CDN indisponible)
+    let lenis = null;
+    if (typeof Lenis !== 'undefined') {
+      lenis = new Lenis({ smoothWheel: true, lerp: 0.1 });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+    } else {
+      console.warn('Lenis non chargé — smooth scroll désactivé');
+    }
 
     // GSAP setup
     gsap.registerPlugin(ScrollTrigger);
@@ -527,8 +532,8 @@
       });
     });
 
-    // Sync ScrollTrigger avec Lenis
-    lenis.on('scroll', ScrollTrigger.update);
+    // Sync ScrollTrigger avec Lenis (seulement si Lenis chargé)
+    if (lenis) lenis.on('scroll', ScrollTrigger.update);
   </script>
 
   <!-- WebGL shader noise sur section manifeste -->
