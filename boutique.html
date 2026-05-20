@@ -400,7 +400,7 @@
               <button class="bg-ivoire border border-nude/40 rounded-full w-12 h-12 hover:border-terracotta hover:bg-terracotta hover:text-ivoire transition font-inter text-sm">L</button>
               <button class="bg-ivoire border border-nude/40 rounded-full w-12 h-12 hover:border-terracotta hover:bg-terracotta hover:text-ivoire transition font-inter text-sm">XL</button>
             </div>
-            <a href="#" class="text-xs underline text-charcoal/60 mt-2 inline-block">Guide des tailles →</a>
+            <a href="#" onclick="document.getElementById('size-guide-modal').classList.remove('hidden'); return false;" class="text-xs underline text-charcoal/60 mt-2 inline-block hover:text-terracotta transition-colors">Guide des tailles →</a>
           </div>
 
           <!-- CTAs -->
@@ -409,10 +409,35 @@
             <button class="w-full border border-charcoal text-charcoal rounded-full py-4 mt-3 font-inter uppercase tracking-wider text-sm hover:bg-charcoal hover:text-ivoire transition">Ajouter à la wishlist</button>
           </div>
 
+          <!-- Bandeau livraison + économies achat groupé -->
+          <div class="mt-6 flex items-start gap-3 p-4 bg-or-sourd/15 border border-or-sourd/30 rounded-2xl">
+            <span class="text-2xl leading-none">📦</span>
+            <div class="text-sm">
+              <p class="font-inter font-semibold text-charcoal">Livraison offerte dès 2 ensembles achetés</p>
+              <p class="font-inter text-charcoal/70 text-xs mt-1">Économisez 5,90 € de frais de port en associant un second ensemble. Idéal pour découvrir aussi <a href="#" class="text-terracotta underline">Comfort</a> ou <a href="#" class="text-terracotta underline">Rosine</a>.</p>
+            </div>
+          </div>
+
           <!-- Encart Made in Belgium -->
           <div class="mt-8 p-5 bg-rose-poudre rounded-2xl flex items-center gap-4">
             <span style="font-size:2rem;">🇧🇪</span>
             <p class="font-inter text-charcoal text-sm leading-relaxed"><strong>Conçu en Belgique.</strong> Confectionné dans des ateliers européens engagés. Livraison offerte dès 2 ensembles achetés.</p>
+          </div>
+
+          <!-- Moyens de paiement -->
+          <div class="mt-6 pt-6 border-t border-nude/40">
+            <p class="font-inter text-xs uppercase tracking-[0.2em] text-charcoal/60 mb-3">Paiements 100% sécurisés</p>
+            <div class="flex flex-wrap gap-2 items-center mb-3">
+              <span class="px-3 py-1.5 bg-ivoire border border-nude/40 rounded-md font-inter text-xs font-semibold text-charcoal">Bancontact</span>
+              <span class="px-3 py-1.5 bg-ivoire border border-nude/40 rounded-md font-inter text-xs font-semibold text-charcoal">Visa</span>
+              <span class="px-3 py-1.5 bg-ivoire border border-nude/40 rounded-md font-inter text-xs font-semibold text-charcoal">Mastercard</span>
+              <span class="px-3 py-1.5 bg-ivoire border border-nude/40 rounded-md font-inter text-xs font-semibold text-charcoal">PayPal</span>
+              <span class="px-3 py-1.5 bg-ivoire border border-nude/40 rounded-md font-inter text-xs font-semibold text-charcoal">Apple Pay</span>
+              <span class="px-3 py-1.5 bg-ivoire border border-nude/40 rounded-md font-inter text-xs font-semibold text-charcoal">Google Pay</span>
+            </div>
+            <p class="font-inter text-xs text-charcoal/60">
+              💳 Possibilité de payer en <strong class="text-charcoal">3x sans frais avec Klarna</strong> à partir de 100 €
+            </p>
           </div>
 
           <!-- Accordéons -->
@@ -447,6 +472,65 @@
                 <p class="font-inter text-charcoal/70 text-sm leading-relaxed pb-4">Livraison Belgique 3-5j (5,90€, offerte dès 2 ensembles). UE 5-8j (9,90€). Retours gratuits sous 30 jours.</p>
               </div>
             </div>
+          </div>
+
+          <!-- Section avis clientes spécifique au produit -->
+          <div class="mt-10 pt-8 border-t border-nude/40">
+            <div class="flex items-center justify-between mb-6">
+              <h4 class="font-cormorant text-2xl text-charcoal">Ce qu'elles en pensent</h4>
+              <div class="text-right">
+                <p class="text-terracotta text-lg">★★★★★</p>
+                <p class="font-inter text-xs text-charcoal/60">4,8 / 5 — 47 avis</p>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+
+              <div class="border-b border-nude/30 pb-6">
+                <div class="flex items-center gap-3 mb-2">
+                  <p class="text-terracotta text-sm">★★★★★</p>
+                  <p class="font-inter font-semibold text-charcoal text-sm">Marie L.</p>
+                  <span class="text-charcoal/40 text-xs">·</span>
+                  <p class="font-inter text-xs text-charcoal/60">Taille M — il y a 2 semaines</p>
+                </div>
+                <p class="font-cormorant italic text-charcoal/80 leading-relaxed text-sm">"Je pensais ne jamais retrouver une lingerie aussi confortable que belle. Le tissu est d'une douceur exceptionnelle, la coupe sublime. Je n'enlève plus mon ensemble Gloria."</p>
+              </div>
+
+              <div class="border-b border-nude/30 pb-6">
+                <div class="flex items-center gap-3 mb-2">
+                  <p class="text-terracotta text-sm">★★★★★</p>
+                  <p class="font-inter font-semibold text-charcoal text-sm">Inès B.</p>
+                  <span class="text-charcoal/40 text-xs">·</span>
+                  <p class="font-inter text-xs text-charcoal/60">Taille L — il y a 1 mois</p>
+                </div>
+                <p class="font-cormorant italic text-charcoal/80 leading-relaxed text-sm">"Reçu en 3 jours, livraison soignée. Tellement satisfaite que j'ai déjà commandé deux autres pièces de la marque. Aurore vous tenez quelque chose de spécial."</p>
+              </div>
+
+              <div class="border-b border-nude/30 pb-6">
+                <div class="flex items-center gap-3 mb-2">
+                  <p class="text-terracotta text-sm">★★★★☆</p>
+                  <p class="font-inter font-semibold text-charcoal text-sm">Sarah K.</p>
+                  <span class="text-charcoal/40 text-xs">·</span>
+                  <p class="font-inter text-xs text-charcoal/60">Taille M — il y a 1 mois</p>
+                </div>
+                <p class="font-cormorant italic text-charcoal/80 leading-relaxed text-sm">"La qualité est top, juste un peu plus serré que prévu. Comme indiqué dans le guide, je conseille de prendre une taille au-dessus. Sinon rien à redire."</p>
+              </div>
+
+              <div class="pb-2">
+                <div class="flex items-center gap-3 mb-2">
+                  <p class="text-terracotta text-sm">★★★★★</p>
+                  <p class="font-inter font-semibold text-charcoal text-sm">Claire D.</p>
+                  <span class="text-charcoal/40 text-xs">·</span>
+                  <p class="font-inter text-xs text-charcoal/60">Taille XL — il y a 2 mois</p>
+                </div>
+                <p class="font-cormorant italic text-charcoal/80 leading-relaxed text-sm">"Enfin une marque inclusive qui pense aux femmes pulpeuses. Coupe respectueuse de toutes les morphologies, finitions impeccables. Merci."</p>
+              </div>
+
+            </div>
+
+            <button class="mt-6 w-full border border-charcoal text-charcoal rounded-full py-3 font-inter text-sm uppercase tracking-wider hover:bg-charcoal hover:text-ivoire transition-colors">
+              Voir les 47 avis →
+            </button>
           </div>
         </div>
 
@@ -599,6 +683,67 @@
       © 2026 Poetic Lingerie — Marque 100% belge. Site conçu avec ❤ par <a href="https://plateoo.github.io/serenity-studio/" target="_blank" rel="noopener" class="text-ivoire/60 hover:text-terracotta transition-colors underline-offset-2 hover:underline">Serenity Studio</a>.
     </div>
   </footer>
+
+  <!-- Modal Guide des tailles -->
+  <div id="size-guide-modal" class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-charcoal/80 backdrop-blur-sm" onclick="if(event.target===this) this.classList.add('hidden');">
+    <div class="bg-ivoire rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
+      <!-- Bouton fermer -->
+      <button onclick="document.getElementById('size-guide-modal').classList.add('hidden');" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full hover:bg-cream transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <p class="text-terracotta uppercase tracking-[0.3em] text-xs mb-2">Trouvez votre taille</p>
+      <h3 class="font-cormorant text-3xl text-charcoal mb-6">Guide des tailles Poetic</h3>
+
+      <p class="font-inter text-sm text-charcoal/70 mb-6 leading-relaxed">
+        Toutes nos pièces sont conçues sur des coupes confortables. Si vous hésitez entre deux tailles, nous recommandons la plus grande pour un confort optimal — un conseil de notre fondatrice Aurore.
+      </p>
+
+      <!-- Tableau tailles -->
+      <table class="w-full font-inter text-sm">
+        <thead>
+          <tr class="border-b border-nude/40">
+            <th class="text-left py-3 text-charcoal/60 uppercase tracking-wider text-xs">Taille</th>
+            <th class="text-left py-3 text-charcoal/60 uppercase tracking-wider text-xs">Dessous poitrine</th>
+            <th class="text-left py-3 text-charcoal/60 uppercase tracking-wider text-xs">Bonnet</th>
+            <th class="text-left py-3 text-charcoal/60 uppercase tracking-wider text-xs">Tour de hanches</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-nude/20">
+            <td class="py-4 font-semibold text-charcoal">S</td>
+            <td class="py-4 text-charcoal/80">75-80 cm</td>
+            <td class="py-4 text-charcoal/80">A — B</td>
+            <td class="py-4 text-charcoal/80">90-94 cm</td>
+          </tr>
+          <tr class="border-b border-nude/20">
+            <td class="py-4 font-semibold text-charcoal">M</td>
+            <td class="py-4 text-charcoal/80">80-85 cm</td>
+            <td class="py-4 text-charcoal/80">B — C</td>
+            <td class="py-4 text-charcoal/80">94-98 cm</td>
+          </tr>
+          <tr class="border-b border-nude/20">
+            <td class="py-4 font-semibold text-charcoal">L</td>
+            <td class="py-4 text-charcoal/80">85-90 cm</td>
+            <td class="py-4 text-charcoal/80">C — D</td>
+            <td class="py-4 text-charcoal/80">98-102 cm</td>
+          </tr>
+          <tr>
+            <td class="py-4 font-semibold text-charcoal">XL</td>
+            <td class="py-4 text-charcoal/80">90-95 cm</td>
+            <td class="py-4 text-charcoal/80">D — E</td>
+            <td class="py-4 text-charcoal/80">102-106 cm</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="mt-6 p-4 bg-rose-poudre rounded-2xl">
+        <p class="font-cormorant italic text-charcoal text-sm leading-relaxed">
+          💡 <strong>Conseil d'Aurore :</strong> nos coupes sont pensées confort, mais nos clientes nous disent unanimement de prendre une taille au-dessus si vous êtes entre deux. Vous nous remercierez.
+        </p>
+      </div>
+    </div>
+  </div>
 
   <script>
     // Forcer le démarrage en haut de page (désactive la scroll restoration Chrome)
