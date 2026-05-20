@@ -41,6 +41,32 @@
     .marquee-track { animation: marquee 40s linear infinite; }
     @keyframes bounce-soft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
     .scroll-bounce { animation: bounce-soft 1.8s ease-in-out infinite; }
+    /* Loader cinematic */
+    @keyframes loaderFill { to { width: 100%; } }
+    #loader-fill { animation: loaderFill 1.6s ease-out forwards; }
+    #loader { transition: opacity 0.8s ease, visibility 0.8s ease; }
+    #loader.loaded { opacity: 0; visibility: hidden; }
+    /* Cursor custom */
+    #cursor-dot {
+      position: fixed; top: 0; left: 0; width: 6px; height: 6px;
+      background: #9C5841; border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+    #cursor-ring {
+      position: fixed; top: 0; left: 0; width: 32px; height: 32px;
+      border: 1px solid rgba(156, 88, 65, 0.4); border-radius: 50%;
+      pointer-events: none; z-index: 9997;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, transform 0.18s ease-out;
+    }
+    #cursor-ring.hover { width: 64px; height: 64px; border-color: rgba(156, 88, 65, 0.8); background: rgba(156, 88, 65, 0.05); }
+    body, body * { cursor: none !important; }
+    @media (hover: none), (max-width: 768px) {
+      #cursor-dot, #cursor-ring { display: none !important; }
+      body, body * { cursor: auto !important; }
+    }
   </style>
 </head>
 <body class="bg-ivoire text-charcoal antialiased">
@@ -60,6 +86,21 @@
     <span class="mx-2 text-ivoire/30">·</span>
     <a href="cgv.html" class="hover:text-terracotta transition-colors">CGV</a>
   </div>
+
+  <!-- Loader cinematic -->
+  <div id="loader" class="fixed inset-0 z-[10000] flex items-center justify-center bg-ivoire">
+    <div class="text-center">
+      <p class="font-cormorant italic text-terracotta text-5xl">Poetic</p>
+      <p class="font-inter tracking-[0.5em] text-charcoal/60 text-xs mt-2 ml-2">L I N G E R I E</p>
+      <div class="w-48 h-px bg-terracotta/20 mt-8 mx-auto relative overflow-hidden">
+        <div id="loader-fill" class="absolute inset-y-0 left-0 w-0 bg-terracotta"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor custom desktop -->
+  <div id="cursor-dot" class="hidden md:block"></div>
+  <div id="cursor-ring" class="hidden md:block"></div>
 
   <!-- [1] BANDEAU TOP -->
   <div class="bg-charcoal text-ivoire text-center" style="font-size:13px;">
@@ -107,7 +148,7 @@
   <section class="py-24 bg-ivoire">
     <div class="max-w-7xl mx-auto px-8 text-center">
       <p class="fade-up uppercase tracking-[0.3em] text-sm text-terracotta">La collection</p>
-      <h1 class="fade-up font-cormorant text-charcoal leading-tight mt-4" style="font-size:4.5rem;">Toutes nos pièces, pensées pour vous.</h1>
+      <h1 class="text-reveal font-cormorant text-charcoal leading-tight mt-4" style="font-size:4.5rem;">Toutes nos pièces, pensées pour vous.</h1>
       <p class="fade-up font-inter text-charcoal/70 max-w-2xl mx-auto mt-4">Six ensembles, six histoires. Choisissez celui qui vous accompagnera dans votre quotidien — ou dans vos plus belles soirées.</p>
     </div>
   </section>
@@ -251,7 +292,7 @@
   <section class="py-24 bg-cream">
     <div class="max-w-7xl mx-auto px-8">
       <p class="fade-up uppercase tracking-[0.3em] text-sm text-terracotta">Le produit en détail</p>
-      <h2 class="fade-up font-cormorant text-charcoal mt-2" style="font-size:2.5rem;">Découvrez l'expérience Poetic</h2>
+      <h2 class="text-reveal font-cormorant text-charcoal mt-2" style="font-size:2.5rem;">Découvrez l'expérience Poetic</h2>
 
       <div class="grid md:grid-cols-2 gap-12 mt-12 items-start">
 
@@ -350,7 +391,7 @@
   <!-- [7] PRODUITS SIMILAIRES -->
   <section class="py-16 bg-ivoire">
     <div class="max-w-7xl mx-auto px-8 text-center">
-      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:2.5rem;">Vous aimerez aussi</h2>
+      <h2 class="text-reveal font-cormorant text-charcoal" style="font-size:2.5rem;">Vous aimerez aussi</h2>
     </div>
     <div class="grid md:grid-cols-4 gap-6 max-w-7xl mx-auto px-8 mt-12">
 
@@ -416,7 +457,7 @@
   <!-- [8] NEWSLETTER -->
   <section id="contact" class="py-24 bg-charcoal text-ivoire">
     <div class="max-w-3xl mx-auto px-8 text-center">
-      <h2 class="fade-up font-cormorant" style="font-size:3rem;">Rejoignez le cercle Poetic.</h2>
+      <h2 class="text-reveal font-cormorant" style="font-size:3rem;">Rejoignez le cercle Poetic.</h2>
       <p class="fade-up font-inter text-ivoire/70 mt-4">Accès en avant-première aux collections, contenus exclusifs, et -10% sur votre première commande.</p>
       <form class="fade-up flex gap-2 max-w-md mx-auto mt-8" onsubmit="return false;">
         <input type="email" placeholder="Votre email" class="flex-1 bg-transparent border-b border-ivoire/40 px-4 py-3 focus:border-terracotta outline-none text-ivoire placeholder-ivoire/40">
@@ -494,6 +535,36 @@
   </footer>
 
   <script>
+    // Loader cinematic — dismiss après remplissage barre
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('loader').classList.add('loaded'), 1800);
+    });
+
+    // Cursor custom (desktop uniquement, masqué via CSS sur mobile)
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    if (cursorDot && cursorRing) {
+      let mouseX = 0, mouseY = 0;
+      let ringX = 0, ringY = 0;
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+      });
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        cursorRing.style.left = ringX + 'px';
+        cursorRing.style.top = ringY + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+      document.querySelectorAll('a, button, [role="button"], input, .group').forEach(el => {
+        el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+      });
+    }
+
     // Burger menu mobile
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -522,6 +593,30 @@
 
     // GSAP setup
     gsap.registerPlugin(ScrollTrigger);
+
+    // Text reveals mot par mot
+    document.querySelectorAll('.text-reveal').forEach(el => {
+      const text = el.textContent;
+      const words = text.split(' ').map(w =>
+        `<span class="word" style="display:inline-block;opacity:0;transform:translateY(24px) rotateX(-30deg);transform-origin:0 100%;">${w}</span>`
+      ).join(' ');
+      el.innerHTML = words;
+      el.style.perspective = '600px';
+
+      gsap.to(el.querySelectorAll('.word'), {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 1,
+        stagger: 0.06,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
 
     // Fade-up sur chaque section
     gsap.utils.toArray('.fade-up').forEach(el => {

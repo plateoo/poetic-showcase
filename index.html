@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/lenis@1.0.42/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 
   <script>
     tailwind.config = {
@@ -41,6 +42,32 @@
     .marquee-track { animation: marquee 40s linear infinite; }
     @keyframes bounce-soft { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(10px); } }
     .scroll-bounce { animation: bounce-soft 1.8s ease-in-out infinite; }
+    /* Loader cinematic */
+    @keyframes loaderFill { to { width: 100%; } }
+    #loader-fill { animation: loaderFill 1.6s ease-out forwards; }
+    #loader { transition: opacity 0.8s ease, visibility 0.8s ease; }
+    #loader.loaded { opacity: 0; visibility: hidden; }
+    /* Cursor custom */
+    #cursor-dot {
+      position: fixed; top: 0; left: 0; width: 6px; height: 6px;
+      background: #9C5841; border-radius: 50%;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+    }
+    #cursor-ring {
+      position: fixed; top: 0; left: 0; width: 32px; height: 32px;
+      border: 1px solid rgba(156, 88, 65, 0.4); border-radius: 50%;
+      pointer-events: none; z-index: 9997;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s ease, height 0.3s ease, border-color 0.3s, transform 0.18s ease-out;
+    }
+    #cursor-ring.hover { width: 64px; height: 64px; border-color: rgba(156, 88, 65, 0.8); background: rgba(156, 88, 65, 0.05); }
+    body, body * { cursor: none !important; }
+    @media (hover: none), (max-width: 768px) {
+      #cursor-dot, #cursor-ring { display: none !important; }
+      body, body * { cursor: auto !important; }
+    }
   </style>
 </head>
 <body class="bg-ivoire text-charcoal antialiased">
@@ -60,6 +87,21 @@
     <span class="mx-2 text-ivoire/30">·</span>
     <a href="cgv.html" class="hover:text-terracotta transition-colors">CGV</a>
   </div>
+
+  <!-- Loader cinematic -->
+  <div id="loader" class="fixed inset-0 z-[10000] flex items-center justify-center bg-ivoire">
+    <div class="text-center">
+      <p class="font-cormorant italic text-terracotta text-5xl">Poetic</p>
+      <p class="font-inter tracking-[0.5em] text-charcoal/60 text-xs mt-2 ml-2">L I N G E R I E</p>
+      <div class="w-48 h-px bg-terracotta/20 mt-8 mx-auto relative overflow-hidden">
+        <div id="loader-fill" class="absolute inset-y-0 left-0 w-0 bg-terracotta"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor custom desktop -->
+  <div id="cursor-dot" class="hidden md:block"></div>
+  <div id="cursor-ring" class="hidden md:block"></div>
 
   <!-- [1] BANDEAU TOP -->
   <div class="bg-charcoal text-ivoire text-center" style="font-size:13px;">
@@ -108,7 +150,7 @@
     <video src="https://poeticlingerie.be/wp-content/uploads/2025/11/b7086e8c04eb4d39bb612c07106b771d.mp4" autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover"></video>
     <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-charcoal/70"></div>
     <div class="relative z-10 w-full max-w-7xl mx-auto px-8 text-center" style="padding-bottom:20vh;">
-      <h1 class="fade-up font-cormorant italic text-ivoire leading-tight text-[4rem] md:text-[7rem]">La lingerie qui vous ressemble.</h1>
+      <h1 class="text-reveal font-cormorant italic text-ivoire leading-tight text-[4rem] md:text-[7rem]">La lingerie qui vous ressemble.</h1>
       <p class="fade-up font-inter font-light text-ivoire/80 mt-4" style="font-size:1.2rem;">Pensée en Belgique, portée partout.</p>
       <div class="fade-up flex flex-wrap gap-4 justify-center mt-8">
         <a href="#boutique" class="bg-terracotta text-ivoire rounded-full px-8 py-3 font-inter text-sm hover:bg-terracotta-deep transition-colors">Découvrir la collection</a>
@@ -131,7 +173,7 @@
       </div>
       <div>
         <p class="fade-up text-terracotta uppercase tracking-[0.3em] text-sm mb-6">L'univers</p>
-        <h2 class="fade-up font-cormorant text-charcoal leading-tight" style="font-size:3.5rem;">Une lingerie née d'une vision.</h2>
+        <h2 class="text-reveal font-cormorant text-charcoal leading-tight" style="font-size:3.5rem;">Une lingerie née d'une vision.</h2>
         <div class="fade-up font-inter text-charcoal/80 leading-relaxed mt-6 space-y-4">
           <p>Poetic Lingerie est née du rêve d'Aurore Mayela : créer des pièces qui célèbrent chaque corps, sans le contraindre.</p>
           <p>Dessinées en Belgique, confectionnées avec soin, nos collections marient confort moderne et élégance intemporelle.</p>
@@ -140,6 +182,21 @@
         <blockquote class="fade-up font-cormorant italic text-terracotta leading-snug mt-8" style="font-size:1.8rem;">« Chaque ensemble raconte une histoire, celle de la femme qui le porte. »</blockquote>
         <p class="fade-up font-inter text-charcoal/60 mt-4">— Aurore Mayela, fondatrice</p>
       </div>
+    </div>
+  </section>
+
+  <!-- [NOUVELLE] SECTION MANIFESTE CINEMATIC -->
+  <section id="manifeste" class="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal">
+    <canvas id="webgl-canvas" class="absolute inset-0 w-full h-full"></canvas>
+    <div class="absolute inset-0 bg-charcoal/30"></div>
+    <div class="relative z-10 max-w-4xl mx-auto px-8 text-center">
+      <p class="text-or-sourd uppercase tracking-[0.4em] text-xs mb-8 fade-up">Notre manifeste</p>
+      <h2 class="text-reveal font-cormorant italic text-ivoire leading-tight" style="font-size:clamp(2.5rem,6vw,5.5rem);">
+        Une lingerie qui n'attend pas le regard de l'autre pour exister.
+      </h2>
+      <p class="font-inter text-ivoire/70 mt-8 max-w-xl mx-auto leading-relaxed fade-up">
+        Chaque pièce Poetic est conçue comme un secret entre vous et vous-même. Le confort, l'élégance, et la dignité — non négociables.
+      </p>
     </div>
   </section>
 
@@ -154,7 +211,7 @@
   <!-- [6] TRIPTYQUE COLLECTIONS -->
   <section id="boutique" class="py-16 md:py-32 bg-cream">
     <div class="max-w-7xl mx-auto px-8 text-center">
-      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:3rem;">Trois collections, mille moments.</h2>
+      <h2 class="text-reveal font-cormorant text-charcoal" style="font-size:3rem;">Trois collections, mille moments.</h2>
       <p class="fade-up font-inter text-charcoal/70 mt-4">Pour le quotidien, les soirs, et les moments qui marquent.</p>
     </div>
     <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-8 mt-16">
@@ -199,7 +256,7 @@
     <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-16 items-center">
       <div>
         <p class="fade-up text-terracotta uppercase tracking-[0.3em] text-sm">Notre engagement</p>
-        <h2 class="fade-up font-cormorant text-charcoal mt-2" style="font-size:3rem;">Conçu et fabriqué en Belgique.</h2>
+        <h2 class="text-reveal font-cormorant text-charcoal mt-2" style="font-size:3rem;">Conçu et fabriqué en Belgique.</h2>
         <p class="fade-up font-inter text-charcoal/80 leading-relaxed mt-6">Chaque pièce Poetic est dessinée à Bruxelles et confectionnée dans des ateliers européens engagés. Des matières sélectionnées avec soin, une éthique sans compromis.</p>
         <ul class="fade-up font-inter text-charcoal mt-8 space-y-4">
           <li class="flex items-center gap-4"><span style="font-size:1.5rem;">🇧🇪</span> Design en Belgique</li>
@@ -216,7 +273,7 @@
   <!-- [8] LES COULISSES -->
   <section id="coulisses" class="py-16 md:py-32 bg-ivoire">
     <div class="max-w-7xl mx-auto px-8 text-center">
-      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:3rem;">Les coulisses.</h2>
+      <h2 class="text-reveal font-cormorant text-charcoal" style="font-size:3rem;">Les coulisses.</h2>
       <p class="fade-up font-inter text-charcoal/70 mt-4">L'envers de chaque ensemble.</p>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-7xl mx-auto px-8 mt-16">
@@ -253,7 +310,7 @@
   <!-- [9] AVIS CLIENTES -->
   <section id="journal" class="py-16 md:py-32 bg-cream">
     <div class="max-w-7xl mx-auto px-8 text-center">
-      <h2 class="fade-up font-cormorant text-charcoal" style="font-size:3rem;">Elles portent Poetic.</h2>
+      <h2 class="text-reveal font-cormorant text-charcoal" style="font-size:3rem;">Elles portent Poetic.</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto px-8 mt-16">
       <!-- Card 1 -->
@@ -289,7 +346,7 @@
   <!-- [10] NEWSLETTER -->
   <section id="contact" class="py-24 bg-charcoal text-ivoire">
     <div class="max-w-3xl mx-auto px-8 text-center">
-      <h2 class="fade-up font-cormorant" style="font-size:3rem;">Rejoignez le cercle Poetic.</h2>
+      <h2 class="text-reveal font-cormorant" style="font-size:3rem;">Rejoignez le cercle Poetic.</h2>
       <p class="fade-up font-inter text-ivoire/70 mt-4">Accès en avant-première aux collections, contenus exclusifs, et -10% sur votre première commande.</p>
       <form class="fade-up flex gap-2 max-w-md mx-auto mt-8" onsubmit="return false;">
         <input type="email" placeholder="Votre email" class="flex-1 bg-transparent border-b border-ivoire/40 px-4 py-3 focus:border-terracotta outline-none text-ivoire placeholder-ivoire/40">
@@ -367,6 +424,36 @@
   </footer>
 
   <script>
+    // Loader cinematic — dismiss après remplissage barre
+    window.addEventListener('load', () => {
+      setTimeout(() => document.getElementById('loader').classList.add('loaded'), 1800);
+    });
+
+    // Cursor custom (desktop uniquement, masqué via CSS sur mobile)
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    if (cursorDot && cursorRing) {
+      let mouseX = 0, mouseY = 0;
+      let ringX = 0, ringY = 0;
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX; mouseY = e.clientY;
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+      });
+      function animateRing() {
+        ringX += (mouseX - ringX) * 0.18;
+        ringY += (mouseY - ringY) * 0.18;
+        cursorRing.style.left = ringX + 'px';
+        cursorRing.style.top = ringY + 'px';
+        requestAnimationFrame(animateRing);
+      }
+      animateRing();
+      document.querySelectorAll('a, button, [role="button"], input, .group').forEach(el => {
+        el.addEventListener('mouseenter', () => cursorRing.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursorRing.classList.remove('hover'));
+      });
+    }
+
     // Burger menu mobile
     const burger = document.getElementById('burger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -396,6 +483,30 @@
     // GSAP setup
     gsap.registerPlugin(ScrollTrigger);
 
+    // Text reveals mot par mot
+    document.querySelectorAll('.text-reveal').forEach(el => {
+      const text = el.textContent;
+      const words = text.split(' ').map(w =>
+        `<span class="word" style="display:inline-block;opacity:0;transform:translateY(24px) rotateX(-30deg);transform-origin:0 100%;">${w}</span>`
+      ).join(' ');
+      el.innerHTML = words;
+      el.style.perspective = '600px';
+
+      gsap.to(el.querySelectorAll('.word'), {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 1,
+        stagger: 0.06,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: el,
+          start: 'top 85%',
+          toggleActions: 'play none none reverse'
+        }
+      });
+    });
+
     // Fade-up sur chaque section
     gsap.utils.toArray('.fade-up').forEach(el => {
       gsap.from(el, {
@@ -418,6 +529,102 @@
 
     // Sync ScrollTrigger avec Lenis
     lenis.on('scroll', ScrollTrigger.update);
+  </script>
+
+  <!-- WebGL shader noise sur section manifeste -->
+  <script>
+  (function initWebGL() {
+    const canvas = document.getElementById('webgl-canvas');
+    if (!canvas || typeof THREE === 'undefined') return;
+
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: false, antialias: true });
+    const scene = new THREE.Scene();
+    const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      renderer.setSize(rect.width, rect.height, false);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const vertexShader = `
+      varying vec2 vUv;
+      void main() {
+        vUv = uv;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `;
+
+    const fragmentShader = `
+      uniform float uTime;
+      uniform vec3 uColor1;
+      uniform vec3 uColor2;
+      uniform vec3 uColor3;
+      varying vec2 vUv;
+
+      vec3 mod289(vec3 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
+      vec2 mod289(vec2 x) { return x - floor(x * (1.0/289.0)) * 289.0; }
+      vec3 permute(vec3 x) { return mod289(((x*34.0)+1.0)*x); }
+
+      float snoise(vec2 v) {
+        const vec4 C = vec4(0.211324865405187, 0.366025403784439, -0.577350269189626, 0.024390243902439);
+        vec2 i = floor(v + dot(v, C.yy));
+        vec2 x0 = v - i + dot(i, C.xx);
+        vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+        vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1;
+        i = mod289(i);
+        vec3 p = permute(permute(i.y + vec3(0.0, i1.y, 1.0)) + i.x + vec3(0.0, i1.x, 1.0));
+        vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+        m = m*m; m = m*m;
+        vec3 x = 2.0 * fract(p * C.www) - 1.0;
+        vec3 h = abs(x) - 0.5;
+        vec3 ox = floor(x + 0.5);
+        vec3 a0 = x - ox;
+        m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
+        vec3 g;
+        g.x = a0.x * x0.x + h.x * x0.y;
+        g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+        return 130.0 * dot(m, g);
+      }
+
+      void main() {
+        vec2 st = vUv;
+        float n1 = snoise(st * 2.5 + uTime * 0.08);
+        float n2 = snoise(st * 4.0 - uTime * 0.12 + n1 * 0.3);
+        float n3 = snoise(st * 1.5 + uTime * 0.05);
+
+        float blend1 = smoothstep(-0.4, 0.6, n1);
+        float blend2 = smoothstep(-0.5, 0.4, n2);
+
+        vec3 col = mix(uColor1, uColor2, blend1);
+        col = mix(col, uColor3, blend2 * 0.5);
+        col *= 0.6 + 0.4 * (n3 + 1.0) * 0.5;
+
+        gl_FragColor = vec4(col, 1.0);
+      }
+    `;
+
+    const geometry = new THREE.PlaneGeometry(2, 2);
+    const uniforms = {
+      uTime: { value: 0 },
+      uColor1: { value: new THREE.Color('#9C5841') },
+      uColor2: { value: new THREE.Color('#7A3F2E') },
+      uColor3: { value: new THREE.Color('#E8C6B5') },
+    };
+    const material = new THREE.ShaderMaterial({ vertexShader, fragmentShader, uniforms });
+    const mesh = new THREE.Mesh(geometry, material);
+    scene.add(mesh);
+
+    let startTime = performance.now();
+    function animate() {
+      uniforms.uTime.value = (performance.now() - startTime) * 0.001;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    }
+    animate();
+  })();
   </script>
 
 </body>
