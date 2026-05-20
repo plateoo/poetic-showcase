@@ -424,9 +424,20 @@
   </footer>
 
   <script>
-    // Loader cinematic — dismiss après remplissage barre
+    // Forcer le démarrage en haut de page (désactive la scroll restoration Chrome)
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+
+    // Loader cinematic — dismiss après remplissage barre, scroll forcé à 0
     window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('loaded'), 1800);
+      window.scrollTo(0, 0);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        document.getElementById('loader').classList.add('loaded');
+        if (typeof lenis !== 'undefined' && lenis) lenis.scrollTo(0, { immediate: true });
+      }, 1800);
     });
 
     // Cursor custom (desktop uniquement, masqué via CSS sur mobile)
