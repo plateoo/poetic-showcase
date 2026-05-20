@@ -273,82 +273,134 @@
     </div>
   </section>
 
-  <!-- [5] OPTIONS À LA CARTE -->
-  <section class="py-16 bg-cream">
+  <!-- SECTION OPTIONS À LA CARTE V2 — Interactive avec checkboxes -->
+  <section id="options-section" class="py-16 bg-cream">
     <div class="max-w-5xl mx-auto px-8">
-      <h2 class="font-cormorant text-charcoal" style="font-size:2.5rem;">Options à la carte</h2>
-      <p class="font-inter text-charcoal/70 mt-2">Pour personnaliser votre formule selon vos priorités.</p>
+      <div class="text-center mb-8">
+        <p class="text-terracotta uppercase tracking-[0.3em] text-sm mb-3">Personnalisez votre formule</p>
+        <h2 class="font-cormorant text-charcoal" style="font-size:2.5rem;">Options à la carte</h2>
+        <p class="font-inter text-charcoal/70 mt-3 max-w-2xl mx-auto">Sélectionnez les options qui correspondent à vos priorités. Plus vous combinez, plus vous économisez.</p>
+      </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+      <!-- Bandeau remise -->
+      <div class="bg-rose-poudre rounded-2xl p-5 mb-8 flex items-center gap-4 justify-center">
+        <span class="text-2xl">🎁</span>
+        <p class="font-inter text-sm text-charcoal text-center">
+          <strong>Combinez vos options et économisez :</strong> <span class="text-terracotta font-semibold">-10%</span> dès 3 options · <span class="text-terracotta font-semibold">-15%</span> dès 5 options
+        </p>
+      </div>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Shooting photo professionnel</p>
-            <p class="font-inter text-xs text-charcoal/60 mt-0.5">1 journée modèle + photographe</p>
-          </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">890 € HTVA</p>
+      <!-- Card spéciale Shooting (sans checkbox, sur demande) -->
+      <div class="bg-ivoire border border-terracotta/30 rounded-2xl p-5 flex items-center justify-between gap-4 mb-4">
+        <div class="flex-1">
+          <p class="font-inter font-semibold text-charcoal">📸 Shooting photo professionnel</p>
+          <p class="font-inter text-charcoal/60 text-xs mt-1">Réalisé par Céline Lybaert, photographe partenaire. Journée de shooting avec modèles et direction artistique.</p>
         </div>
-
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Multilingue : version NL + EN</p>
-          </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">690 € HTVA</p>
+        <div class="text-right shrink-0">
+          <p class="font-inter text-terracotta font-semibold">Sur demande</p>
+          <a href="#signature-section" class="text-xs text-charcoal/60 underline mt-1 inline-block hover:text-terracotta">Discuter du shooting →</a>
         </div>
+      </div>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Référencement SEO technique</p>
-            <p class="font-inter text-xs text-charcoal/60 mt-0.5">+ 10 fiches produits optimisées</p>
+      <!-- 6 options ponctuelles avec checkbox -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+        <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+          <div class="flex items-center gap-4 flex-1">
+            <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="Multilingue NL + EN" data-price="390">
+            <div>
+              <p class="font-inter font-semibold text-charcoal text-sm">Multilingue NL + EN</p>
+              <p class="font-inter text-charcoal/60 text-xs mt-0.5">Indispensable pour le marché belge bilingue</p>
+            </div>
           </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">790 € HTVA</p>
-        </div>
+          <p class="font-inter font-semibold text-terracotta shrink-0">390 €</p>
+        </label>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Programme fidélité</p>
-            <p class="font-inter text-xs text-charcoal/60 mt-0.5">Points, récompenses, parrainage</p>
+        <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+          <div class="flex items-center gap-4 flex-1">
+            <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="SEO + 10 fiches produits optimisées" data-price="390">
+            <div>
+              <p class="font-inter font-semibold text-charcoal text-sm">Référencement SEO + 10 fiches</p>
+              <p class="font-inter text-charcoal/60 text-xs mt-0.5">Optimisation technique et contenu Google</p>
+            </div>
           </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">490 € HTVA</p>
-        </div>
+          <p class="font-inter font-semibold text-terracotta shrink-0">390 €</p>
+        </label>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Module quiz « Trouvez votre coupe parfaite »</p>
+        <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+          <div class="flex items-center gap-4 flex-1">
+            <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="Programme fidélité points et parrainage" data-price="390">
+            <div>
+              <p class="font-inter font-semibold text-charcoal text-sm">Programme fidélité & parrainage</p>
+              <p class="font-inter text-charcoal/60 text-xs mt-0.5">Points, récompenses, code parrain</p>
+            </div>
           </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">390 € HTVA</p>
-        </div>
+          <p class="font-inter font-semibold text-terracotta shrink-0">390 €</p>
+        </label>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Intégration Instagram Shop</p>
-            <p class="font-inter text-xs text-charcoal/60 mt-0.5">Tags produits dans les posts</p>
+        <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+          <div class="flex items-center gap-4 flex-1">
+            <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="Quiz Trouvez votre coupe" data-price="190">
+            <div>
+              <p class="font-inter font-semibold text-charcoal text-sm">Quiz "Trouvez votre coupe"</p>
+              <p class="font-inter text-charcoal/60 text-xs mt-0.5">Module interactif pour guider l'achat</p>
+            </div>
           </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">290 € HTVA</p>
-        </div>
+          <p class="font-inter font-semibold text-terracotta shrink-0">190 €</p>
+        </label>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">E-carte cadeau personnalisable</p>
+        <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+          <div class="flex items-center gap-4 flex-1">
+            <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="Intégration Instagram Shop" data-price="190">
+            <div>
+              <p class="font-inter font-semibold text-charcoal text-sm">Instagram Shop intégré</p>
+              <p class="font-inter text-charcoal/60 text-xs mt-0.5">Tags produits dans vos posts Insta</p>
+            </div>
           </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">390 € HTVA</p>
-        </div>
+          <p class="font-inter font-semibold text-terracotta shrink-0">190 €</p>
+        </label>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Maintenance mensuelle</p>
-            <p class="font-inter text-xs text-charcoal/60 mt-0.5">Sauvegardes, mises à jour, 1h support</p>
+        <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+          <div class="flex items-center gap-4 flex-1">
+            <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="E-carte cadeau personnalisable" data-price="190">
+            <div>
+              <p class="font-inter font-semibold text-charcoal text-sm">E-carte cadeau</p>
+              <p class="font-inter text-charcoal/60 text-xs mt-0.5">Module cadeau personnalisable</p>
+            </div>
           </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">89 € HTVA / mois</p>
-        </div>
+          <p class="font-inter font-semibold text-terracotta shrink-0">190 €</p>
+        </label>
 
-        <div class="bg-ivoire rounded-xl p-5 flex items-start justify-between gap-4 md:col-span-2">
-          <div class="flex-1">
-            <p class="font-inter text-sm text-charcoal">Hébergement Vercel + nom de domaine annuel</p>
-          </div>
-          <p class="font-inter font-semibold text-terracotta whitespace-nowrap">240 € HTVA / an</p>
-        </div>
+      </div>
 
+      <!-- Options récurrentes (maintenance + hébergement) — séparé visuellement -->
+      <div class="mt-8 pt-8 border-t border-nude/30">
+        <p class="font-inter text-xs uppercase tracking-[0.2em] text-charcoal/60 mb-4 text-center">Options récurrentes (engagement annuel)</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+
+          <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+            <div class="flex items-center gap-4 flex-1">
+              <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="Maintenance mensuelle" data-price="89" data-recurring="mois">
+              <div>
+                <p class="font-inter font-semibold text-charcoal text-sm">Maintenance mensuelle</p>
+                <p class="font-inter text-charcoal/60 text-xs mt-0.5">Sauvegardes, MAJ, 1h support / mois</p>
+              </div>
+            </div>
+            <p class="font-inter font-semibold text-terracotta shrink-0">89 € / mois</p>
+          </label>
+
+          <label class="option-card cursor-pointer flex items-center justify-between gap-4 p-5 bg-ivoire border border-nude/40 rounded-2xl hover:border-terracotta transition-colors">
+            <div class="flex items-center gap-4 flex-1">
+              <input type="checkbox" class="option-checkbox w-5 h-5 accent-terracotta" data-name="Hébergement annuel + nom de domaine" data-price="240" data-recurring="an">
+              <div>
+                <p class="font-inter font-semibold text-charcoal text-sm">Hébergement + domaine</p>
+                <p class="font-inter text-charcoal/60 text-xs mt-0.5">Vercel + .be ou .com (par an)</p>
+              </div>
+            </div>
+            <p class="font-inter font-semibold text-terracotta shrink-0">240 € / an</p>
+          </label>
+
+        </div>
       </div>
     </div>
   </section>
@@ -383,34 +435,333 @@
     </div>
   </section>
 
-  <!-- [7] BLOC SIGNATURE -->
-  <section class="py-16 bg-charcoal text-ivoire">
-    <div class="max-w-3xl mx-auto px-8 text-center">
-      <h2 class="font-cormorant text-ivoire" style="font-size:2.5rem;">Ensemble, donnons à Poetic le site qu'il mérite.</h2>
-      <p class="font-inter text-ivoire/70 mt-4 max-w-xl mx-auto">Cette proposition est valable 30 jours. Pour avancer, un simple échange par email ou téléphone suffit — je m'occupe de tout le reste.</p>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-md mx-auto mt-8 text-left">
-        <div>
-          <p class="uppercase tracking-wider text-xs text-ivoire/50">Email</p>
-          <p class="font-inter text-ivoire text-base mt-1">contact.serenitybelgium@gmail.com</p>
-        </div>
-        <div>
-          <p class="uppercase tracking-wider text-xs text-ivoire/50">Téléphone</p>
-          <p class="font-inter text-ivoire text-base mt-1">0470 / 11.82.22</p>
-        </div>
+  <!-- SECTION SIGNATURE ÉLECTRONIQUE -->
+  <section id="signature-section" class="py-20 bg-charcoal text-ivoire">
+    <div class="max-w-3xl mx-auto px-8">
+      <div class="text-center mb-10">
+        <p class="text-or-sourd uppercase tracking-[0.3em] text-sm mb-4">Étape finale</p>
+        <h2 class="font-cormorant" style="font-size:2.8rem;">Finaliser et signer votre proposition</h2>
+        <p class="font-inter text-ivoire/70 mt-4 max-w-xl mx-auto">Choisissez votre formule, validez vos options, signez et envoyez. Je reçois immédiatement votre proposition et reviens vers vous sous 24h.</p>
       </div>
 
-      <div class="no-print flex flex-wrap gap-4 justify-center mt-10">
-        <a href="mailto:contact.serenitybelgium@gmail.com?subject=Acceptation%20de%20la%20proposition%20POE-2026-001" class="bg-terracotta text-ivoire rounded-full px-8 py-3 font-inter text-sm hover:bg-terracotta-deep transition-colors">Accepter cette proposition</a>
-        <button onclick="window.print()" class="border border-ivoire text-ivoire rounded-full px-8 py-3 font-inter text-sm hover:bg-ivoire hover:text-charcoal transition-colors">Imprimer / Télécharger en PDF</button>
+      <!-- FORMULAIRE -->
+      <div class="bg-ivoire text-charcoal rounded-3xl p-8 md:p-10">
+
+        <!-- Identité -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+          <div>
+            <label class="font-inter text-xs uppercase tracking-wider text-charcoal/60 mb-2 block">Votre nom</label>
+            <input type="text" id="signer-name" class="w-full bg-cream border border-nude/40 rounded-xl px-4 py-3 font-inter text-charcoal focus:border-terracotta outline-none" placeholder="Aurore Mayela">
+          </div>
+          <div>
+            <label class="font-inter text-xs uppercase tracking-wider text-charcoal/60 mb-2 block">Votre email</label>
+            <input type="email" id="signer-email" class="w-full bg-cream border border-nude/40 rounded-xl px-4 py-3 font-inter text-charcoal focus:border-terracotta outline-none" placeholder="contact@poeticlingerie.be">
+          </div>
+        </div>
+
+        <!-- Choix de la formule -->
+        <p class="font-inter text-xs uppercase tracking-wider text-charcoal/60 mb-3">Formule choisie</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-8">
+          <label class="cursor-pointer p-4 bg-cream border border-nude/40 rounded-xl hover:border-terracotta transition-colors flex items-center gap-3 has-[:checked]:border-terracotta has-[:checked]:bg-rose-poudre/30">
+            <input type="radio" name="formula" class="accent-terracotta" data-name="Essentiel" data-price="1290">
+            <div>
+              <p class="font-inter font-semibold text-sm">Essentiel</p>
+              <p class="font-inter text-terracotta text-sm">1 290 €</p>
+            </div>
+          </label>
+          <label class="cursor-pointer p-4 bg-cream border border-nude/40 rounded-xl hover:border-terracotta transition-colors flex items-center gap-3 has-[:checked]:border-terracotta has-[:checked]:bg-rose-poudre/30">
+            <input type="radio" name="formula" class="accent-terracotta" data-name="Évolution" data-price="2490" checked>
+            <div>
+              <p class="font-inter font-semibold text-sm">Évolution ✦</p>
+              <p class="font-inter text-terracotta text-sm">2 490 €</p>
+            </div>
+          </label>
+          <label class="cursor-pointer p-4 bg-cream border border-nude/40 rounded-xl hover:border-terracotta transition-colors flex items-center gap-3 has-[:checked]:border-terracotta has-[:checked]:bg-rose-poudre/30">
+            <input type="radio" name="formula" class="accent-terracotta" data-name="Premium" data-price="3490">
+            <div>
+              <p class="font-inter font-semibold text-sm">Premium</p>
+              <p class="font-inter text-terracotta text-sm">3 490 €</p>
+            </div>
+          </label>
+        </div>
+
+        <!-- Récap dynamique -->
+        <div id="recap-block" class="bg-cream rounded-2xl p-5 mb-8">
+          <p class="font-inter text-xs uppercase tracking-wider text-charcoal/60 mb-3">Récapitulatif de votre proposition</p>
+          <div class="space-y-2 font-inter text-sm">
+            <div class="flex justify-between"><span>Formule <span id="recap-formula" class="font-semibold">Évolution</span></span><span id="recap-formula-price" class="font-semibold">2 490 €</span></div>
+            <div id="recap-options-list" class="text-charcoal/70 italic"></div>
+            <div id="recap-discount-line" class="hidden flex justify-between text-emerald-700"><span>Remise multi-options (<span id="recap-discount-pct">10</span>%)</span><span>−<span id="recap-discount-amount">0</span> €</span></div>
+          </div>
+          <div class="border-t border-nude/40 mt-4 pt-3 flex justify-between items-baseline">
+            <span class="font-cormorant text-charcoal text-lg">Total HTVA</span>
+            <span class="font-cormorant text-terracotta text-2xl"><span id="recap-total">2 490</span> €</span>
+          </div>
+          <p id="recap-recurring" class="hidden text-xs text-charcoal/60 mt-2 italic"></p>
+        </div>
+
+        <!-- Canvas signature -->
+        <p class="font-inter text-xs uppercase tracking-wider text-charcoal/60 mb-3">Votre signature</p>
+        <div class="relative border border-nude/40 rounded-2xl bg-cream p-2 mb-3">
+          <canvas id="signature-canvas" width="600" height="180" class="w-full h-44 cursor-crosshair touch-none"></canvas>
+          <button type="button" onclick="clearSignature()" class="absolute top-3 right-3 text-xs text-charcoal/50 hover:text-terracotta transition-colors">Effacer ✕</button>
+        </div>
+        <p class="font-inter text-xs text-charcoal/50 italic mb-8">Signez avec votre souris ou votre doigt sur mobile. Votre signature vaut acceptation de la présente proposition.</p>
+
+        <!-- Boutons -->
+        <button type="button" onclick="submitProposition()" id="submit-btn" class="w-full bg-charcoal text-ivoire rounded-full py-4 font-inter uppercase tracking-wider text-sm hover:bg-terracotta transition-colors">
+          Signer et finaliser
+        </button>
+        <p class="text-center text-xs text-charcoal/50 italic mt-3">Vous recevrez une confirmation par email, ainsi qu'un appel de Jordan sous 24h.</p>
+
+      </div>
+
+      <!-- Contact en cas de besoin -->
+      <div class="text-center mt-10">
+        <p class="font-inter text-ivoire/60 text-sm">Une question avant de signer ?</p>
+        <p class="font-inter text-ivoire mt-2">
+          <a href="mailto:contact.serenitybelgium@gmail.com" class="hover:text-terracotta transition-colors">contact.serenitybelgium@gmail.com</a>
+          <span class="mx-3 text-ivoire/30">·</span>
+          <a href="tel:+32470118222" class="hover:text-terracotta transition-colors">0470 / 11.82.22</a>
+        </p>
       </div>
     </div>
   </section>
+
+  <!-- MODALE CONFIRMATION (cachée par défaut) -->
+  <div id="confirmation-modal" class="hidden fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-charcoal/80 backdrop-blur-sm">
+    <div class="bg-ivoire rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-8 relative">
+      <button onclick="document.getElementById('confirmation-modal').classList.add('hidden');" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-full hover:bg-cream transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <div class="text-center">
+        <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <p class="text-terracotta uppercase tracking-[0.3em] text-xs mb-2">Proposition signée</p>
+        <h3 class="font-cormorant text-3xl text-charcoal mb-4">Merci <span id="confirm-name"></span> !</h3>
+        <p class="font-inter text-charcoal/70 text-sm mb-6">Votre proposition signée a été envoyée. Jordan vous contactera sous 24h pour la suite.</p>
+        <div class="bg-cream rounded-2xl p-5 text-left mb-6">
+          <p class="font-inter text-xs uppercase tracking-wider text-charcoal/60 mb-3">Récapitulatif envoyé</p>
+          <p class="font-inter text-sm text-charcoal" id="confirm-recap"></p>
+        </div>
+        <button onclick="window.print()" class="w-full border border-charcoal text-charcoal rounded-full py-3 font-inter text-sm uppercase tracking-wider hover:bg-charcoal hover:text-ivoire transition-colors mb-2">
+          Télécharger en PDF
+        </button>
+        <button onclick="document.getElementById('confirmation-modal').classList.add('hidden');" class="w-full text-charcoal/60 text-sm py-2 hover:text-terracotta transition-colors">
+          Fermer
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- [8] FOOTER DOCUMENT -->
   <footer class="py-8 bg-ivoire border-t border-nude/30 text-center">
     <p class="font-inter text-charcoal/50 text-xs">Proposition commerciale POE-2026-001 émise le 19 mai 2026 par Serenity Belgium SNC · BE 1031.214.423 · contact.serenitybelgium@gmail.com · 0470/11.82.22</p>
   </footer>
+
+  <script>
+  // === Calcul dynamique du récap ===
+  function computeTotal() {
+    const formula = document.querySelector('input[name="formula"]:checked');
+    const formulaPrice = formula ? parseFloat(formula.dataset.price) : 0;
+    const formulaName = formula ? formula.dataset.name : '—';
+
+    const checkedOptions = document.querySelectorAll('.option-checkbox:checked');
+    const oneTimeOptions = Array.from(checkedOptions).filter(cb => !cb.dataset.recurring);
+    const recurringOptions = Array.from(checkedOptions).filter(cb => cb.dataset.recurring);
+
+    let optionsTotal = 0;
+    oneTimeOptions.forEach(cb => optionsTotal += parseFloat(cb.dataset.price));
+
+    let discountPct = 0;
+    if (oneTimeOptions.length >= 5) discountPct = 15;
+    else if (oneTimeOptions.length >= 3) discountPct = 10;
+
+    const discount = optionsTotal * discountPct / 100;
+    const grandTotal = formulaPrice + (optionsTotal - discount);
+
+    return { formulaName, formulaPrice, oneTimeOptions, recurringOptions, optionsTotal, discount, discountPct, grandTotal };
+  }
+
+  function updateRecap() {
+    const r = computeTotal();
+    document.getElementById('recap-formula').textContent = r.formulaName;
+    document.getElementById('recap-formula-price').textContent = r.formulaPrice.toLocaleString('fr-BE') + ' €';
+
+    const optionsListEl = document.getElementById('recap-options-list');
+    if (r.oneTimeOptions.length > 0) {
+      optionsListEl.innerHTML = r.oneTimeOptions.map(cb =>
+        `<div class="flex justify-between"><span>+ ${cb.dataset.name}</span><span>${parseFloat(cb.dataset.price).toLocaleString('fr-BE')} €</span></div>`
+      ).join('');
+    } else {
+      optionsListEl.innerHTML = '<p class="text-charcoal/40 text-xs">Aucune option sélectionnée</p>';
+    }
+
+    const discountLine = document.getElementById('recap-discount-line');
+    if (r.discount > 0) {
+      discountLine.classList.remove('hidden');
+      discountLine.classList.add('flex');
+      document.getElementById('recap-discount-pct').textContent = r.discountPct;
+      document.getElementById('recap-discount-amount').textContent = r.discount.toLocaleString('fr-BE');
+    } else {
+      discountLine.classList.add('hidden');
+      discountLine.classList.remove('flex');
+    }
+
+    document.getElementById('recap-total').textContent = r.grandTotal.toLocaleString('fr-BE');
+
+    const recurringEl = document.getElementById('recap-recurring');
+    if (r.recurringOptions.length > 0) {
+      recurringEl.classList.remove('hidden');
+      recurringEl.textContent = '+ ' + r.recurringOptions.map(cb => `${cb.dataset.name} (${cb.dataset.price} €/${cb.dataset.recurring})`).join(' et ');
+    } else {
+      recurringEl.classList.add('hidden');
+    }
+  }
+
+  document.querySelectorAll('input[name="formula"], .option-checkbox').forEach(el => {
+    el.addEventListener('change', updateRecap);
+  });
+  updateRecap();
+
+  // === Canvas Signature ===
+  const canvas = document.getElementById('signature-canvas');
+  const ctx = canvas.getContext('2d');
+  let drawing = false, lastX = 0, lastY = 0;
+
+  function resizeCanvas() {
+    const rect = canvas.getBoundingClientRect();
+    canvas.width = rect.width;
+    canvas.height = rect.height;
+  }
+  window.addEventListener('load', resizeCanvas);
+  window.addEventListener('resize', resizeCanvas);
+
+  function getPos(e) {
+    const rect = canvas.getBoundingClientRect();
+    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return { x: clientX - rect.left, y: clientY - rect.top };
+  }
+  function startDraw(e) { drawing = true; const p = getPos(e); lastX = p.x; lastY = p.y; }
+  function draw(e) {
+    if (!drawing) return;
+    e.preventDefault && e.preventDefault();
+    const p = getPos(e);
+    ctx.strokeStyle = '#2A1F1A';
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(lastX, lastY);
+    ctx.lineTo(p.x, p.y);
+    ctx.stroke();
+    lastX = p.x; lastY = p.y;
+  }
+  function stopDraw() { drawing = false; }
+  canvas.addEventListener('mousedown', startDraw);
+  canvas.addEventListener('mousemove', draw);
+  canvas.addEventListener('mouseup', stopDraw);
+  canvas.addEventListener('mouseleave', stopDraw);
+  canvas.addEventListener('touchstart', startDraw);
+  canvas.addEventListener('touchmove', draw);
+  canvas.addEventListener('touchend', stopDraw);
+
+  function clearSignature() { ctx.clearRect(0, 0, canvas.width, canvas.height); }
+  function isCanvasBlank() {
+    const blank = document.createElement('canvas');
+    blank.width = canvas.width; blank.height = canvas.height;
+    return canvas.toDataURL() === blank.toDataURL();
+  }
+
+  // === Soumission Web3Forms ===
+  async function submitProposition() {
+    const btn = document.getElementById('submit-btn');
+    const name = document.getElementById('signer-name').value.trim();
+    const email = document.getElementById('signer-email').value.trim();
+
+    if (!name) { alert('Veuillez renseigner votre nom.'); return; }
+    if (!email) { alert('Veuillez renseigner votre email.'); return; }
+    if (isCanvasBlank()) { alert('Veuillez signer dans le cadre prévu.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'Envoi en cours...';
+
+    const r = computeTotal();
+    const signatureData = canvas.toDataURL('image/png');
+
+    const optionsListText = r.oneTimeOptions.length > 0
+      ? r.oneTimeOptions.map(cb => `- ${cb.dataset.name} : ${cb.dataset.price} €`).join('\n')
+      : 'Aucune';
+    const recurringText = r.recurringOptions.length > 0
+      ? '\n\nOptions récurrentes :\n' + r.recurringOptions.map(cb => `- ${cb.dataset.name} : ${cb.dataset.price} €/${cb.dataset.recurring}`).join('\n')
+      : '';
+
+    const message = `Bonjour Jordan,
+
+${name} (${email}) a signé électroniquement la proposition Poetic Lingerie.
+
+═════════════════════════════════════════
+RÉCAPITULATIF
+═════════════════════════════════════════
+
+Formule choisie : ${r.formulaName} — ${r.formulaPrice.toLocaleString('fr-BE')} €
+
+Options ponctuelles sélectionnées :
+${optionsListText}
+
+${r.discount > 0 ? `Remise multi-options (-${r.discountPct}%) : -${r.discount.toLocaleString('fr-BE')} €\n` : ''}
+TOTAL HTVA : ${r.grandTotal.toLocaleString('fr-BE')} €${recurringText}
+
+═════════════════════════════════════════
+
+Signature électronique : voir pièce jointe à la fin de cet email (data URL base64).
+
+Contactez ${name} sous 24h pour la suite.
+
+— Devis Poetic Lingerie · Serenity Studio`;
+
+    const formData = new FormData();
+    formData.append('access_key', '76cc3a75-fadd-4b88-886c-5a306268d654');
+    formData.append('subject', `🖋️ Proposition Poetic signée par ${name} — ${r.grandTotal.toLocaleString('fr-BE')} €`);
+    formData.append('from_name', 'Devis Poetic Lingerie');
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', message);
+    formData.append('Formule', `${r.formulaName} (${r.formulaPrice} €)`);
+    formData.append('Total HTVA', `${r.grandTotal.toLocaleString('fr-BE')} €`);
+    formData.append('Signature (base64 PNG)', signatureData);
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+      });
+      const result = await response.json();
+
+      if (result.success) {
+        document.getElementById('confirm-name').textContent = name;
+        document.getElementById('confirm-recap').innerHTML =
+          `Formule <strong>${r.formulaName}</strong> · ` +
+          (r.oneTimeOptions.length > 0 ? `${r.oneTimeOptions.length} option${r.oneTimeOptions.length > 1 ? 's' : ''} · ` : '') +
+          `Total <strong>${r.grandTotal.toLocaleString('fr-BE')} € HTVA</strong>`;
+        document.getElementById('confirmation-modal').classList.remove('hidden');
+        btn.textContent = 'Signer et finaliser';
+        btn.disabled = false;
+      } else {
+        alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par email.');
+        btn.textContent = 'Signer et finaliser';
+        btn.disabled = false;
+      }
+    } catch (err) {
+      alert('Connexion impossible. Veuillez vérifier votre connexion internet et réessayer.');
+      btn.textContent = 'Signer et finaliser';
+      btn.disabled = false;
+      console.error(err);
+    }
+  }
+  </script>
 
 </body>
 </html>
